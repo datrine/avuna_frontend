@@ -1,0 +1,27 @@
+.input-container {
+  width: 100%;
+}
+
+.input-container label {
+  color: var(--neutral-lightgrey);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.input-container input {
+  background-color: var(--theme-color);
+  border: 2px solid var(--neutral-greyblue);
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px 16px;
+  color: var(--neutral-darkgreyblue);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  box-sizing: border-box;
+}
