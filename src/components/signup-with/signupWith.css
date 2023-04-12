@@ -1,0 +1,27 @@
+.signup-with p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #0663c7;
+}
+
+.social-signup {
+  display: flex;
+  align-items: center;
+  margin: 16px auto;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.social-single {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #a5a5a5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
