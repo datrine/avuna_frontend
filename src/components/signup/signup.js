@@ -37,6 +37,9 @@ const Signup = () => {
           action={() => {
             navigate("/verify");
           }}
+          color="white"
+          bgColor="#066fe0"
+          margin="51px"
         />
         <p>
           Already have an account? <span>Sign In</span>
