@@ -1,6 +1,6 @@
 import React from "react";
 import "./popup.css";
-import Close from "../../assets/times.svg";
+// import Close from "../../assets/times.svg";
 
 const Popup = ({ children, overlay, action }) => {
   return (
