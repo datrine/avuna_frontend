@@ -1,0 +1,58 @@
+.interest-container {
+  border: 1px solid #5c7792;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  padding: 16px 24px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 24%;
+}
+
+.interest-container2 {
+  border: 1px solid #5c7792;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  padding: 16px 24px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 48%;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.interest-container svg,
+.interest-container2 svg {
+  margin: 0px auto;
+  transition: 1s all ease;
+}
+
+.interest-text-white {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #282828;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: 2s all ease;
+}
+
+.interest-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #0663c7;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: 2s all ease;
+}

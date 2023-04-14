@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ buttonText, action, bgColor, color, margin }) => {
+const Button = ({ buttonText, action, bgColor, color, margin, disabled }) => {
   const ButtonStyle = styled.button`
     width: 100%;
     margin-top: ${margin};
     background-color: ${bgColor};
     color: ${color};
-    cursor: pointer;
+    cursor: ${disabled ? "not-allowed" : "pointer"};
     border: 0;
     padding: 16px 0px;
     font-style: normal;
@@ -15,8 +15,9 @@ const Button = ({ buttonText, action, bgColor, color, margin }) => {
     font-size: 14px;
     line-height: 17px;
     border-radius: 8px;
+    transition: 1s all ease;
   `;
-  return <ButtonStyle onClick={action}>{buttonText}</ButtonStyle>;
+  return <>{disabled ? <ButtonStyle disabled>{buttonText}</ButtonStyle> : <ButtonStyle onClick={action}>{buttonText}</ButtonStyle>}</>;
 };
 
 export default Button;
