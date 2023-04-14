@@ -1,10 +1,10 @@
-.signup-cont {
+.signin-cont {
   width: 79%;
   margin-top: 54px;
   margin-bottom: 214px;
 }
 
-.signup-header h2 {
+.signin-header h2 {
   color: var(--primary-color);
   font-style: normal;
   font-weight: 700;
@@ -13,7 +13,7 @@
   margin-bottom: 8px;
 }
 
-.signup-header p {
+.signin-header p {
   color: var(--neutral-grey);
   font-style: normal;
   font-weight: 400;
@@ -21,25 +21,25 @@
   line-height: 24px;
 }
 
-.signup-form {
+.signin-form {
   margin-top: 53px;
 }
 
-.signup-double {
+.signin-double {
   display: flex;
   justify-content: space-between;
 }
 
-.signup-double > div {
+.signin-double > div {
   width: 48%;
 }
 
-.signup-single {
+.signin-single {
   width: 100%;
   margin-top: 32px;
 }
 
-.signup-form h3 {
+.signin-form h3 {
   display: flex;
   justify-content: flex-end;
   margin-top: 16px;
@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 
-.signup-form p {
+.signin-form p {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -61,7 +61,7 @@
   margin-top: 34px;
 }
 
-.signup-form p span {
+.signin-form p span {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -102,4 +102,11 @@
 
 .forgot-input {
   margin-top: 24px;
+}
+
+@media screen and (max-width: 500px) {
+  .signin-cont {
+    width: 92%;
+    margin: 24px auto;
+  }
 }

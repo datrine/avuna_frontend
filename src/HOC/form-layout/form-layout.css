@@ -10,9 +10,13 @@
   /* width: 43%; */
 }
 
-.signup-img img {
+.signup-img img:first-child {
   height: 100%;
   /* width: 100%; */
+}
+
+.signup-img img:last-child {
+  display: none;
 }
 
 .signup-wrapper {
@@ -20,4 +24,26 @@
   height: 100%;
   overflow-y: scroll;
   flex: 1;
+}
+
+@media screen and (max-width: 500px) {
+  .signup-container {
+    height: unset;
+    overflow-y: unset;
+    flex-direction: column;
+  }
+
+  .signup-img img:first-child {
+    display: none;
+  }
+
+  .signup-img img:last-child {
+    display: block;
+    width: 100%;
+  }
+
+  .signup-wrapper {
+    width: 100%;
+    margin-left: 0px;
+  }
 }

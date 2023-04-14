@@ -39,7 +39,7 @@
 
 @media screen and (max-width: 600px) {
   .popup-cont {
-    top: 5%;
+    top: 20%;
     left: 5%;
     width: 90%;
     max-width: 100%;

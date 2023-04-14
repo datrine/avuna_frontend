@@ -11,18 +11,18 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [overlay, setOverlay] = useState(false);
   return (
-    <div className="signup-cont">
-      <div className="signup-header">
+    <div className="signin-cont">
+      <div className="signin-header">
         <h2>Sign In</h2>
         <p>Welcome Back</p>
       </div>
-      <div className="signup-form">
-        <div className="signup-single">
+      <div className="signin-form">
+        <div className="signin-single">
           <div>
             <Inputs labelName="Email Address" placeholder="Enter your email address" type="email" />
           </div>
         </div>
-        <div className="signup-single">
+        <div className="signin-single">
           <div>
             <Inputs labelName="Password" placeholder="Enter your password" type="password" />
           </div>

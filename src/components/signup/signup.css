@@ -59,3 +59,10 @@
   color: #0663c7;
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+  .signup-cont {
+    width: 92%;
+    margin: 24px auto;
+  }
+}
