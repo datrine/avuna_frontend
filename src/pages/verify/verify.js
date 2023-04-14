@@ -1,25 +1,19 @@
 import React, { useState } from "react";
 import "./verify.css";
-import SignupMan from "../../assets/signup-img.png";
 import ClosedEnvelope from "../../assets/closed-envelope.svg";
 import OpenedEnvelope from "../../assets/opened-envelope.svg";
 import Signup from "../../components/signup/signup";
 import Popup from "../../components/popup/popup";
 import Button from "../../components/button/button";
 import { useNavigate } from "react-router-dom";
+import FormLayout from "../../HOC/form-layout/form-layout";
 
 const Verify = () => {
   const navigate = useNavigate();
   const [verify, setVerify] = useState(false);
   return (
-    <div className="signup-container">
-      <div className="signup-img">
-        <img src={SignupMan} alt="signup man" />
-      </div>
-      <div className="signup-wrapper">
-        <Signup />
-      </div>
-
+    <FormLayout>
+      <Signup />
       <Popup overlay="true">
         <img src={verify ? OpenedEnvelope : ClosedEnvelope} alt="closed-envelope" className="envelope" />
         <div className="popup-text">
@@ -52,7 +46,7 @@ const Verify = () => {
           />
         )}
       </Popup>
-    </div>
+    </FormLayout>
   );
 };
 

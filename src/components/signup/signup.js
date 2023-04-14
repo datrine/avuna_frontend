@@ -39,12 +39,18 @@ const Signup = () => {
           }}
           color="white"
           bgColor="#066fe0"
-          margin="51px"
+          margin="48px"
         />
         <p>
-          Already have an account? <span>Sign In</span>
+          Already have an account?
+          <span
+            onClick={() => {
+              navigate("/login");
+            }}>
+            Sign In
+          </span>
         </p>
-        <SignupWith />
+        <SignupWith text="Or Sign Up With:" />
       </div>
     </div>
   );

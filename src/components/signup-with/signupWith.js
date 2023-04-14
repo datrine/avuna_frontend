@@ -4,10 +4,10 @@ import Google from "../../assets/google.svg";
 import Twitter from "../../assets/twitter.svg";
 import Facebook from "../../assets/facebook.svg";
 
-const SignupWith = () => {
+const SignupWith = ({ text }) => {
   return (
     <div className="signup-with">
-      <p>Or Sign Up With:</p>
+      <p>{text}</p>
       <div className="social-signup">
         <div className="social-single">
           <img src={Google} alt="google" />
