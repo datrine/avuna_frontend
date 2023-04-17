@@ -9,6 +9,7 @@
   text-align: center;
   box-sizing: border-box;
   width: 24%;
+  cursor: pointer;
 }
 
 .interest-container2 {
@@ -22,6 +23,7 @@
   text-align: center;
   box-sizing: border-box;
   width: 48%;
+  cursor: pointer;
 }
 
 .checkbox {
@@ -55,4 +57,12 @@
   margin-top: 16px;
   cursor: pointer;
   transition: 2s all ease;
+}
+
+@media screen and (max-width: 500px) {
+  .interest-container,
+  .interest-container2 {
+    width: 100%;
+    margin-bottom: 16px;
+  }
 }

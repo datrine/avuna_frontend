@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Loader from "../loader/loader";
 
-const Button = ({ buttonText, action, bgColor, color, margin, disabled }) => {
+const Button = ({ buttonText, action, bgColor, color, margin, disabled, loading }) => {
   const ButtonStyle = styled.button`
     width: 100%;
     margin-top: ${margin};
@@ -17,7 +18,7 @@ const Button = ({ buttonText, action, bgColor, color, margin, disabled }) => {
     border-radius: 8px;
     transition: 1s all ease;
   `;
-  return <>{disabled ? <ButtonStyle disabled>{buttonText}</ButtonStyle> : <ButtonStyle onClick={action}>{buttonText}</ButtonStyle>}</>;
+  return <>{loading ? <Loader /> : disabled ? <ButtonStyle disabled>{buttonText}</ButtonStyle> : <ButtonStyle onClick={action}>{buttonText}</ButtonStyle>}</>;
 };
 
 export default Button;

@@ -53,11 +53,11 @@ const PreferenceSingle = () => {
                 if (marketing) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Marketing";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Marketing"]);
                 }
 
                 setMarketing(!marketing);
@@ -71,11 +71,11 @@ const PreferenceSingle = () => {
                 if (digitalMarketing) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Digital Marketing";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Digital Marketing"]);
                 }
                 setDigitalMarketing(!digitalMarketing);
               }}
@@ -88,11 +88,11 @@ const PreferenceSingle = () => {
                 if (finance) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Finance & Accounting";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Finance & Accounting"]);
                 }
                 setFinance(!finance);
               }}
@@ -105,11 +105,11 @@ const PreferenceSingle = () => {
                 if (leadership) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Leadership & Management";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Leadership & Management"]);
                 }
                 setLeadership(!leadership);
               }}
@@ -124,11 +124,11 @@ const PreferenceSingle = () => {
                 if (operations) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Operations Management";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Operations Management"]);
                 }
                 setOperations(!operations);
               }}
@@ -141,11 +141,11 @@ const PreferenceSingle = () => {
                 if (sales) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Sales";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Sales"]);
                 }
                 setSales(!sales);
               }}
@@ -158,11 +158,11 @@ const PreferenceSingle = () => {
                 if (businessManage) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Business Management";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Business Management"]);
                 }
                 setBusinessManage(!businessManage);
               }}
@@ -175,11 +175,11 @@ const PreferenceSingle = () => {
                 if (customerService) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Customer Service";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Customer Service"]);
                 }
                 setCustomerService(!customerService);
               }}
@@ -194,11 +194,11 @@ const PreferenceSingle = () => {
                 if (hr) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Human Resource Management";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Human Resource Management"]);
                 }
                 setHr(!hr);
               }}
@@ -211,11 +211,11 @@ const PreferenceSingle = () => {
                 if (businessComm) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Business Communication";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Business Communication"]);
                 }
                 setBusinessComm(!businessComm);
               }}
@@ -228,11 +228,11 @@ const PreferenceSingle = () => {
                 if (project) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Project Management";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Project Management"]);
                 }
                 setProject(!project);
               }}
@@ -245,11 +245,11 @@ const PreferenceSingle = () => {
                 if (entrepreneurship) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Entrepreneurship";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Entrepreneurship"]);
                 }
                 setEntrepreneurship(!entrepreneurship);
               }}
@@ -265,11 +265,11 @@ const PreferenceSingle = () => {
                 if (international) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "International Business";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "International Business"]);
                 }
                 setInternational(!international);
               }}
@@ -283,11 +283,11 @@ const PreferenceSingle = () => {
                 if (supply) {
                   setCategories(
                     categories.filter((item) => {
-                      return item !== e.target.innerText;
+                      return item !== "Supply Chain Management";
                     })
                   );
                 } else {
-                  setCategories((arr) => [...arr, e.target.innerText]);
+                  setCategories((arr) => [...arr, "Supply Chain Management"]);
                 }
                 setSupply(!supply);
               }}

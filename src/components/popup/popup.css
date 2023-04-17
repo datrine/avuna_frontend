@@ -21,7 +21,7 @@
   border-radius: 12px;
   max-width: 538px;
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 32%;
   box-sizing: border-box;
   padding: 16px 16px 24px 16px;
@@ -39,7 +39,7 @@
 
 @media screen and (max-width: 600px) {
   .popup-cont {
-    top: 20%;
+    top: 10%;
     left: 5%;
     width: 90%;
     max-width: 100%;

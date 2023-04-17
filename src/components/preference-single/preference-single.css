@@ -12,7 +12,7 @@
   font-size: 28px;
   line-height: 36px;
   margin-bottom: 8px;
-  color: #4d4d4d;
+  color: var(--primary-color);
 }
 
 .preference-header p {
@@ -22,7 +22,7 @@
   line-height: 24px;
   width: 45%;
   margin: 8px auto 48px;
-  color: #717171;
+  color: #212121;
 }
 
 .preference-wrapper {
@@ -42,4 +42,25 @@
 .preference-button {
   width: 37%;
   margin: 48px auto 0px;
+}
+
+@media screen and (max-width: 500px) {
+  .preference-container {
+    padding: 40px 0px;
+  }
+
+  .preference-header p {
+    width: 100%;
+  }
+
+  .preference-cont,
+  .preference-wrapper {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .preference-button {
+    width: 100%;
+  }
 }
