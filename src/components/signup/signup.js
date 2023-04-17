@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EmailLogo from "../../assets/email.svg";
+import Lock from "../../assets/lock.svg";
+import ClosedEye from "../../assets/close-eye.svg";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -18,6 +21,7 @@ const Signup = () => {
   const [f_name, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [passwordType, setPasswordType] = useState(false);
 
   useEffect(() => {
     if (registerSuccess !== null) {
@@ -67,6 +71,7 @@ const Signup = () => {
               action={(e) => {
                 setEmail(e.target.value);
               }}
+              icon={EmailLogo}
             />
           </div>
         </div>
@@ -75,10 +80,15 @@ const Signup = () => {
             <Inputs
               labelName="Password"
               placeholder="Enter your password"
-              type="password"
+              type={passwordType ? "text" : "password"}
               action={(e) => {
                 setPassword(e.target.value);
               }}
+              passwordAction={() => {
+                setPasswordType(!passwordType);
+              }}
+              icon={Lock}
+              password={passwordType ? ClosedEye : ClosedEye}
             />
           </div>
         </div>

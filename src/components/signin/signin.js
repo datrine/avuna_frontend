@@ -11,6 +11,9 @@ import { loginAction } from "../../redux/actions/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotLogo from "../../assets/forgot-password.svg";
+import EmailLogo from "../../assets/email.svg";
+import Lock from "../../assets/lock.svg";
+import ClosedEye from "../../assets/close-eye.svg";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordType, setPasswordType] = useState(false);
   // const [newpassword, setNewPassword] = useState("");
   // const [newemail, setNewEmail] = useState("");
 
@@ -49,6 +53,7 @@ const SignIn = () => {
               action={(e) => {
                 setEmail(e.target.value);
               }}
+              icon={EmailLogo}
             />
           </div>
         </div>
@@ -57,10 +62,15 @@ const SignIn = () => {
             <Inputs
               labelName="Password"
               placeholder="Enter your password"
-              type="password"
+              type={passwordType ? "text" : "password"}
               action={(e) => {
                 setPassword(e.target.value);
               }}
+              passwordAction={() => {
+                setPasswordType(!passwordType);
+              }}
+              icon={Lock}
+              password={passwordType ? ClosedEye : ClosedEye}
             />
           </div>
         </div>
@@ -117,6 +127,7 @@ const SignIn = () => {
               labelName="Email"
               placeholder="Enter your email address"
               type="email"
+              icon={EmailLogo}
               // action={(e) => {
               //   setNewEmail(e.target.value);
               // }}
