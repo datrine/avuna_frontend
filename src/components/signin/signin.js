@@ -44,6 +44,7 @@ const SignIn = () => {
       });
     } catch (error) {
       toast.error(error.response.data.err.msg);
+      console.log(error.response.data);
       setLoading(false);
     }
   };
