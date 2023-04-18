@@ -41,7 +41,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/preferences" element={<Preferences />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/reset-password" element={<Reset />} />
+            <Route path="/reset" element={<Reset />} />
           </Routes>
         </div>
       </motion.div>
