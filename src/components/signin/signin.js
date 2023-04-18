@@ -139,7 +139,8 @@ const SignIn = () => {
               <Button
                 buttonText="Back To Login"
                 action={() => {
-                  navigate("/login");
+                  setOverlay(false);
+                  setEmailSent(false);
                 }}
                 color="white"
                 bgColor="#066fe0"
@@ -176,6 +177,7 @@ const SignIn = () => {
                 color="white"
                 bgColor="#066fe0"
                 margin="24px"
+                loading={loading}
               />
             </>
           )}
