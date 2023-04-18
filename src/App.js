@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 // import { ConnectedRouter } from "react-router-redux";
 import { store } from "./store";
 import Home from "./pages/home/home";
+import Reset from "./pages/reset-password/reset";
 
 const AppWrapper = () => {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/preferences" element={<Preferences />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/reset-password" element={<Reset />} />
           </Routes>
         </div>
       </motion.div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./signin.css";
 import Inputs from "../inputs/inputs";
 import Button from "../button/button";
@@ -6,36 +6,47 @@ import SignupWith from "../signup-with/signupWith";
 import { useNavigate } from "react-router-dom";
 import Popup from "../popup/popup";
 import OutsideClick from "../outside-click/outsideClick";
-import { useDispatch, useSelector } from "react-redux";
-import { loginAction } from "../../redux/actions/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotLogo from "../../assets/forgot-password.svg";
 import EmailLogo from "../../assets/email.svg";
 import Lock from "../../assets/lock.svg";
 import ClosedEye from "../../assets/close-eye.svg";
+import OpenedEye from "../../assets/opened-eye.svg";
+import axiosInstance from "../../redux/helper/apiClient";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { loginSuccess, loginError } = useSelector((state) => state.loginReducer);
   const [overlay, setOverlay] = useState(false);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState(false);
-  // const [newpassword, setNewPassword] = useState("");
-  // const [newemail, setNewEmail] = useState("");
+  const [newemail, setNewEmail] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
 
-  useEffect(() => {
-    if (loginSuccess !== null) {
-      window.sessionStorage.setItem("token", loginSuccess);
-      navigate("/home");
-    } else if (loginError !== null) {
+  const loginAction = (code) => {
+    try {
+      axiosInstance.post("/login/basic", code).then((response) => {
+        window.sessionStorage.setItem("token", JSON.stringify(response.data));
+        navigate("/home");
+      });
+    } catch (error) {
+      toast.error(error.response.data.err.msg);
       setLoading(false);
-      toast.error(loginError.msg);
     }
-  }, [loginSuccess, loginError, navigate]);
+  };
+  const resetAction = (code) => {
+    try {
+      axiosInstance.post(`/accounts/password/recovery/request?${newemail}`, code).then((response) => {
+        setLoading(false);
+        setEmailSent(true);
+      });
+    } catch (error) {
+      toast.error(error.response.data.err.msg);
+      setLoading(false);
+    }
+  };
   return (
     <div className="signin-cont">
       <ToastContainer />
@@ -70,7 +81,7 @@ const SignIn = () => {
                 setPasswordType(!passwordType);
               }}
               icon={Lock}
-              password={passwordType ? ClosedEye : ClosedEye}
+              password={passwordType ? OpenedEye : ClosedEye}
             />
           </div>
         </div>
@@ -88,7 +99,7 @@ const SignIn = () => {
               email,
               password,
             };
-            dispatch(loginAction(data));
+            loginAction(data);
           }}
           loading={loading}
           color="white"
@@ -115,43 +126,58 @@ const SignIn = () => {
           action={() => {
             setOverlay(false);
           }}>
-          <div className="forgot-grey">
-            <img src={ForgotLogo} alt="forgot-logo" />
-          </div>
-          <div className="forgot-text">
-            <h2>Forgot Password</h2>
-            <p>Please verify your email by clicking the button the below</p>
-          </div>
-          <div className="forgot-input">
-            <Inputs
-              labelName="Email"
-              placeholder="Enter your email address"
-              type="email"
-              icon={EmailLogo}
-              // action={(e) => {
-              //   setNewEmail(e.target.value);
-              // }}
-            />
-          </div>
-          <div className="forgot-input">
-            <Inputs
-              labelName="New Password"
-              placeholder="Enter your new Password"
-              type="password"
-              // action={(e) => {
-              //   setNewPassword(e.target.value);
-              // }}
-            />
-          </div>
-          <Button
-            buttonText="Reset Password"
-            action={() => {
-              navigate("/preferences");
-            }}
-            color="white"
-            bgColor="#066fe0"
-            margin="24px"
-          />
+          {emailSent ? (
+            <>
+              <div className="forgot-grey">
+                <img src={ForgotLogo} alt="forgot-logo" />
+              </div>
+              <div className="forgot-text">
+                <h2>Password Reset</h2>
+                <p>A verification email has been sent to your inbox, please follow the instructions to complete the process</p>
+              </div>
+              <Button
+                buttonText="Back To Login"
+                action={() => {
+                  navigate("/login");
+                }}
+                color="white"
+                bgColor="#066fe0"
+                margin="24px"
+              />
+            </>
+          ) : (
+            <>
+              <div className="forgot-grey">
+                <img src={ForgotLogo} alt="forgot-logo" />
+              </div>
+              <div className="forgot-text">
+                <h2>Forgot Password</h2>
+                <p>Please verify your email by clicking the button the below</p>
+              </div>
+              <div className="forgot-input">
+                <Inputs
+                  labelName="Email"
+                  placeholder="Enter your email address"
+                  type="email"
+                  icon={EmailLogo}
+                  action={(e) => {
+                    setNewEmail(e.target.value);
+                  }}
+                />
+              </div>
+              <Button
+                buttonText="Verify Email"
+                action={() => {
+                  setLoading(true);
+                  const data = { newemail };
+                  resetAction(data);
+                }}
+                color="white"
+                bgColor="#066fe0"
+                margin="24px"
+              />
+            </>
+          )}
         </Popup>
       </OutsideClick>
     </div>

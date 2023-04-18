@@ -1,0 +1,117 @@
+.reset-cont {
+  width: 79%;
+  margin-top: 54px;
+  margin-bottom: 214px;
+}
+
+.reset-header h2 {
+  color: var(--primary-color);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  margin-bottom: 8px;
+}
+
+.reset-header p {
+  color: var(--neutral-grey);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.reset-form {
+  margin-top: 53px;
+}
+
+.reset-single {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.reset-form h3 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.reset-form > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #343434;
+  margin-top: 34px;
+}
+
+.password-requirements {
+  margin-top: 24px;
+}
+
+.password-requirements h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 8px;
+  color: var(--danger);
+}
+
+.single-password-req {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.single-password-req div {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--danger);
+}
+
+.single-password-req p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--danger);
+  margin-left: 12px;
+}
+
+.single-password-reqt {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.single-password-reqt div {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--success);
+}
+
+.single-password-reqt p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--success);
+  margin-left: 12px;
+}
+
+@media screen and (max-width: 500px) {
+  .reset-cont {
+    width: 92%;
+    margin: 24px auto;
+  }
+}

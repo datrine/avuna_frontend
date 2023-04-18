@@ -34,4 +34,6 @@ span {
   --neutral-greyblue: #abbed1;
   --neutral-darkgrey: #4d4d4d;
   --neutral-darkgreyblue: #5c7792;
+  --danger: #e01507;
+  --success: #1b6e53;
 }

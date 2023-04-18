@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import EmailLogo from "../../assets/email.svg";
 import Lock from "../../assets/lock.svg";
 import ClosedEye from "../../assets/close-eye.svg";
+import OpenedEye from "../../assets/opened-eye.svg";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ const Signup = () => {
                 setPasswordType(!passwordType);
               }}
               icon={Lock}
-              password={passwordType ? ClosedEye : ClosedEye}
+              password={passwordType ? OpenedEye : ClosedEye}
             />
           </div>
         </div>
