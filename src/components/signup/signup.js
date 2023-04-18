@@ -12,6 +12,8 @@ import EmailLogo from "../../assets/email.svg";
 import Lock from "../../assets/lock.svg";
 import ClosedEye from "../../assets/close-eye.svg";
 import OpenedEye from "../../assets/opened-eye.svg";
+import PasswordReq from "../password-req/passwordReq";
+import validator from "validator";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -23,6 +25,89 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
+  const [uppercase, setUppercase] = useState(false);
+  const [symbol, setSymbol] = useState(false);
+  const [numbers, setNumbers] = useState(false);
+  const [noCount, setNoCount] = useState(false);
+  const [lowercase, setLowercase] = useState(false);
+  const [typed, setTyped] = useState(false);
+
+  const handlePwd = (e) => {
+    const count = e.target.value.length;
+    if (count > 0) {
+      setTyped(true);
+    } else {
+      setTyped(false);
+    }
+    if (
+      validator.isStrongPassword(e.target.value, {
+        minLength: 0,
+        minLowercase: 0,
+        minUppercase: 0,
+        minNumbers: 0,
+        minSymbols: 1,
+      })
+    ) {
+      setSymbol(true);
+    } else {
+      setSymbol(false);
+    }
+    if (
+      validator.isStrongPassword(e.target.value, {
+        minLength: 0,
+        minLowercase: 0,
+        minUppercase: 1,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    ) {
+      setUppercase(true);
+    } else {
+      setUppercase(false);
+    }
+
+    if (
+      validator.isStrongPassword(e.target.value, {
+        minLength: 0,
+        minLowercase: 0,
+        minUppercase: 0,
+        minNumbers: 1,
+        minSymbols: 0,
+      })
+    ) {
+      setNumbers(true);
+    } else {
+      setNumbers(false);
+    }
+
+    if (
+      validator.isStrongPassword(e.target.value, {
+        minLength: 8,
+        minLowercase: 0,
+        minUppercase: 0,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    ) {
+      setNoCount(true);
+    } else {
+      setNoCount(false);
+    }
+    if (
+      validator.isStrongPassword(e.target.value, {
+        minLength: 0,
+        minLowercase: 1,
+        minUppercase: 0,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    ) {
+      setLowercase(true);
+    } else {
+      setLowercase(false);
+    }
+    setPassword(e.target.value);
+  };
 
   useEffect(() => {
     if (registerSuccess !== null) {
@@ -82,9 +167,7 @@ const Signup = () => {
               labelName="Password"
               placeholder="Enter your password"
               type={passwordType ? "text" : "password"}
-              action={(e) => {
-                setPassword(e.target.value);
-              }}
+              action={handlePwd}
               passwordAction={() => {
                 setPasswordType(!passwordType);
               }}
@@ -93,6 +176,7 @@ const Signup = () => {
             />
           </div>
         </div>
+        {typed ? <PasswordReq numbers={numbers} lowercase={lowercase} uppercase={uppercase} symbol={symbol} noCount={noCount} /> : null}
         <Button
           buttonText="Submit"
           loading={loading}

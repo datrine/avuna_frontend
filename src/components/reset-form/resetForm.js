@@ -10,6 +10,7 @@ import ClosedEye from "../../assets/close-eye.svg";
 import OpenedEye from "../../assets/opened-eye.svg";
 import axiosInstance from "../../redux/helper/apiClient";
 import validator from "validator";
+import PasswordReq from "../password-req/passwordReq";
 
 const ResetForm = () => {
   const navigate = useNavigate();
@@ -23,8 +24,15 @@ const ResetForm = () => {
   const [numbers, setNumbers] = useState(false);
   const [noCount, setNoCount] = useState(false);
   const [lowercase, setLowercase] = useState(false);
+  const [typed, setTyped] = useState(false);
 
   const handlePwd = (e) => {
+    const count = e.target.value.length;
+    if (count > 0) {
+      setTyped(true);
+    } else {
+      setTyped(false);
+    }
     if (
       validator.isStrongPassword(e.target.value, {
         minLength: 0,
@@ -108,7 +116,7 @@ const ResetForm = () => {
       toast.error("Passwords have to match");
     } else {
       try {
-        axiosInstance.post(`/accounts/password/recovery/change?${token}&${linkEmail}`, code).then((response) => {
+        axiosInstance.post(`/accounts/password/recovery/change?token=${token}&email=${linkEmail}`, code).then((response) => {
           navigate("/login");
         });
       } catch (error) {
@@ -157,29 +165,7 @@ const ResetForm = () => {
             />
           </div>
         </div>
-        <div className="password-requirements">
-          <h2>Password Requirements</h2>
-          <div className={noCount ? "single-password-reqt" : "single-password-req"}>
-            <div></div>
-            <p>At least 8 characters</p>
-          </div>
-          <div className={numbers ? "single-password-reqt" : "single-password-req"}>
-            <div></div>
-            <p>At least a number</p>
-          </div>
-          <div className={lowercase ? "single-password-reqt" : "single-password-req"}>
-            <div></div>
-            <p>A lowercase Letter</p>
-          </div>
-          <div className={uppercase ? "single-password-reqt" : "single-password-req"}>
-            <div></div>
-            <p>A uppercase Letter</p>
-          </div>
-          <div className={symbol ? "single-password-reqt" : "single-password-req"}>
-            <div></div>
-            <p>A special character</p>
-          </div>
-        </div>
+        {typed ? <PasswordReq numbers={numbers} lowercase={lowercase} uppercase={uppercase} symbol={symbol} noCount={noCount} /> : null}
         <Button
           buttonText="Change My Password"
           action={() => {
