@@ -38,7 +38,7 @@ const SignIn = () => {
   };
   const resetAction = (code) => {
     try {
-      axiosInstance.get(`/accounts/password/recovery/request?${newemail}`, code).then((response) => {
+      axiosInstance.get(`/accounts/password/recovery/request?email=${newemail}`, code).then((response) => {
         setLoading(false);
         setEmailSent(true);
       });
