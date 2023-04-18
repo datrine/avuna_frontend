@@ -154,7 +154,7 @@ const SignIn = () => {
               </div>
               <div className="forgot-text">
                 <h2>Forgot Password</h2>
-                <p>Please verify your email by clicking the button the below</p>
+                <p>Please verify your email by clicking the button below</p>
               </div>
               <div className="forgot-input">
                 <Inputs
