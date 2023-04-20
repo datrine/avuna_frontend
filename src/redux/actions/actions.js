@@ -21,7 +21,7 @@ export const registeration = (code) => (dispatch) => {
   axiosInstance
     .post(apiRoutes.registerStudent, code)
     .then((response) => dispatch(registerLoadSuccess(response.data)))
-    .catch((error) => dispatch(registerLoadError(error.message)));
+    .catch((error) => dispatch(registerLoadError(error.response.data.err)));
 };
 
 //registeration actions end
