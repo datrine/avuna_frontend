@@ -2,6 +2,7 @@
   padding: 24px 0px;
   background: #eef5fc;
   border-bottom: 1px solid #5c7792;
+  position: relative;
 }
 
 .header-container {
@@ -11,11 +12,9 @@
   width: 100%;
 }
 
-/* .header-logo {
-  display: flex;
-  width: 23%;
-  justify-content: space-between;
-} */
+.header-wrap img:first-child {
+  display: none;
+}
 
 .header-country {
   display: flex;
@@ -23,13 +22,31 @@
   justify-content: space-between;
 }
 
+.header-logo img:last-child {
+  display: none;
+}
+
 .header-country img:first-child {
   border-radius: 50%;
   margin-right: 8px;
 }
 
+.header-cont {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-conts {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .nav-links {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
 }
@@ -41,6 +58,10 @@
 
 .nav-link img {
   margin-left: 14px;
+}
+
+.nav-link .drop-right {
+  display: none;
 }
 
 .nav-links a {
@@ -60,7 +81,7 @@
   background: #ffffff;
   border: 2px solid #0671e0;
   border-radius: 6px;
-  width: 19%;
+  width: 24%;
 }
 
 .nav-search input {
@@ -70,9 +91,13 @@
 }
 
 .nav-actions {
-  width: 23%;
+  width: 28%;
   display: flex;
   justify-content: space-between;
+}
+
+.mobile-profile-pic {
+  display: none;
 }
 
 .profile-pic {
@@ -104,4 +129,168 @@
   margin-right: 14px;
   color: #4d4d4d;
   text-transform: capitalize;
+}
+
+.nav-actions a,
+.nav-a {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .header-container {
+    flex-direction: column;
+    align-items: unset;
+  }
+
+  .header-cont {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+
+  .header-conts {
+    flex-direction: column;
+    width: 100%;
+    margin: 34px auto;
+    align-items: unset;
+    position: absolute;
+    background-color: #eef5fc;
+    left: 0px;
+    top: 50px;
+    /* padding: 10px 32px; */
+  }
+
+  .header-logo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-logo img:last-child {
+    display: block;
+    cursor: pointer;
+  }
+
+  .header-wrap {
+    display: flex;
+  }
+
+  .header-wrap img:first-child {
+    margin-right: 20px;
+    display: block;
+  }
+
+  .mobile-profile-pic {
+    display: flex;
+    width: 86%;
+    margin: 0px auto;
+  }
+
+  .mobile-profile-pic {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mobile-profile-pic > div {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-profile-pic .user-pic {
+    width: 40px;
+    height: 40px;
+    background: #066fe0;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-profile-pic p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    margin-right: 14px;
+    color: #4d4d4d;
+    text-transform: capitalize;
+  }
+
+  .mobile-profile-pic > img {
+    width: 8px;
+  }
+
+  .profile-pic {
+    display: none;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 86%;
+    margin: 26px auto 0px;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid #4196f0;
+  }
+
+  .nav-link .drop-right {
+    display: block;
+  }
+
+  .nav-link .img-dropdown {
+    display: none;
+  }
+
+  .nav-links a {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 24px 0px;
+    border-top: 1px solid #4196f0;
+    color: #212121;
+  }
+
+  .nav-link a {
+    border-top: none;
+  }
+
+  .nav-search,
+  .nav-actions > img {
+    display: none;
+  }
+
+  .nav-actions {
+    width: 86%;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-actions a {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 24px 0px;
+    border-bottom: 1px solid #4196f0;
+    color: #212121;
+    display: block;
+    text-decoration: none;
+  }
+
+  .nav-a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #4196f0;
+  }
+
+  .nav-a a {
+    border-bottom: none;
+  }
 }
