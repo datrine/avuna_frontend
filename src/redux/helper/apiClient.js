@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
   baseURL: "https://avuna-backend.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${newLoginToken.accessToken}`,
+    Authorization: `Bearer ${newLoginToken?.accessToken}`,
   },
 });
 
