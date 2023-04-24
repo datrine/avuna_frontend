@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Lock from "../../assets/lock.svg";
 import ClosedEye from "../../assets/close-eye.svg";
 import OpenedEye from "../../assets/opened-eye.svg";
-import axiosInstance from "../../redux/helper/apiClient";
 import validator from "validator";
 import PasswordReq from "../password-req/passwordReq";
 import Popup from "../popup/popup";
@@ -112,6 +111,14 @@ const ResetForm = () => {
   }
   let query = useQuery();
   const token = query.get("token");
+  const axiosInstance = axios.create({
+    baseURL: "https://avuna-backend.onrender.com/api",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   const linkEmail = query.get("email");
   const loginAction = async (code) => {
     if (password !== newPassword) {
