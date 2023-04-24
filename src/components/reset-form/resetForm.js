@@ -11,6 +11,8 @@ import OpenedEye from "../../assets/opened-eye.svg";
 import axiosInstance from "../../redux/helper/apiClient";
 import validator from "validator";
 import PasswordReq from "../password-req/passwordReq";
+import Popup from "../popup/popup";
+import CheckMark from "../../assets/check-mark.svg";
 
 const ResetForm = () => {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ const ResetForm = () => {
   const [noCount, setNoCount] = useState(false);
   const [lowercase, setLowercase] = useState(false);
   const [typed, setTyped] = useState(false);
+  const [overlay, setOverlay] = useState(false);
 
   const handlePwd = (e) => {
     const count = e.target.value.length;
@@ -110,18 +113,36 @@ const ResetForm = () => {
   let query = useQuery();
   const token = query.get("token");
   const linkEmail = query.get("email");
-  const loginAction = (code) => {
+  const loginAction = async (code) => {
     if (password !== newPassword) {
       setLoading(false);
       toast.error("Passwords have to match");
     } else {
-      try {
-        axiosInstance.post(`/accounts/password/recovery/change?token=${token}&email=${linkEmail}`, code).then((response) => {
-          navigate("/login");
-        });
-      } catch (error) {
-        toast.error(error.response.data.err.msg);
+      if (!numbers) {
         setLoading(false);
+        toast.error("Password must contain a Number");
+      } else if (!symbol) {
+        setLoading(false);
+        toast.error("Password must contain a Special Character");
+      } else if (!noCount) {
+        setLoading(false);
+        toast.error("Password must be up to 8 Characters");
+      } else if (!lowercase) {
+        setLoading(false);
+        toast.error("Password must contain a Lower Case Character");
+      } else if (!uppercase) {
+        setLoading(false);
+        toast.error("Password must contain a Upper Case Character");
+      } else {
+        try {
+          await axiosInstance.post(`/accounts/password/recovery/change?token=${token}&email=${linkEmail}`, code).then((response) => {
+            setLoading(false);
+            setOverlay(true);
+          });
+        } catch (error) {
+          toast.error(error.response.data.err.msg);
+          setLoading(false);
+        }
       }
     }
   };
@@ -180,16 +201,28 @@ const ResetForm = () => {
           bgColor="#066fe0"
           margin="48px"
         />
-        {/* <p>
-          Don’t have an account?
-          <span
-            onClick={() => {
-              navigate("/");
-            }}>
-            Sign Up
-          </span>
-        </p>
-        <SignupWith text="Or Login With:" /> */}
+        <Popup
+          overlay={overlay}
+          action={() => {
+            setOverlay(false);
+          }}>
+          <div className="reset-logo">
+            <img src={CheckMark} alt="forgot-logo" />
+          </div>
+          <div className="reset-text">
+            <h2>Password Updated</h2>
+            <p>You can can now log in with your new password</p>
+          </div>
+          <Button
+            buttonText="Go to Login Page"
+            action={() => {
+              navigate("/login");
+            }}
+            color="white"
+            bgColor="#066fe0"
+            margin="24px"
+          />
+        </Popup>
       </div>
     </div>
   );

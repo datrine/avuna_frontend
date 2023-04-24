@@ -3,7 +3,12 @@ import "./home.css";
 import Header from "../../components/header/header";
 
 const Home = () => {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <div className="loading-home"></div>
+    </>
+  );
 };
 
 export default Home;

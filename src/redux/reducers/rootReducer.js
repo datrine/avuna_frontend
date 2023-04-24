@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import registerReducer from "./register";
-import loginReducer from "./login";
+import userProfileReducer from "./userProfile";
 
 const appReducer = combineReducers({
   registerReducer: registerReducer,
-  loginReducer: loginReducer,
+  userProfileReducer: userProfileReducer,
 });
 const rootReducer = (state, action) => {
   if (action.type === "LOGOUT_START") {

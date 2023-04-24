@@ -1,4 +1,4 @@
-import { register, login } from "../types/actionTypes";
+import { register, userProfile } from "../types/actionTypes";
 import axiosInstance from "../helper/apiClient";
 import apiRoutes from "../helper/apiRoutes";
 
@@ -26,26 +26,26 @@ export const registeration = (code) => (dispatch) => {
 
 //registeration actions end
 
-//Login actions
-export const loginLoadStart = () => ({
-  type: login.LOGIN_START,
+//userProfile actions
+export const userProfileLoadStart = () => ({
+  type: userProfile.USER_PROFILE_START,
 });
 
-export const loginLoadSuccess = (billers) => ({
-  type: login.LOGIN_SUCCESS,
+export const userProfileLoadSuccess = (billers) => ({
+  type: userProfile.USER_PROFILE_SUCCESS,
   payload: billers,
 });
 
-export const loginLoadError = (errorMessage) => ({
-  type: login.LOGIN_ERROR,
+export const userProfileLoadError = (errorMessage) => ({
+  type: userProfile.USER_PROFILE_ERROR,
   payload: errorMessage,
 });
-export const loginAction = (code) => (dispatch) => {
-  dispatch(loginLoadStart());
+export const userProfileAction = (coe) => (dispatch) => {
+  dispatch(userProfileLoadStart());
   axiosInstance
-    .post(apiRoutes.loginStudent, code)
-    .then((response) => dispatch(loginLoadSuccess(response.data)))
-    .catch((error) => dispatch(loginLoadError(error.response.data.err)));
+    .get(apiRoutes.userProfile)
+    .then((response) => dispatch(userProfileLoadSuccess(response.data)))
+    .catch((error) => dispatch(userProfileLoadError(error.response.data.err)));
 };
 
-//Login actions end
+//userProfile actions end

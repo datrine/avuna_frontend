@@ -1,8 +1,8 @@
 const registerStudent = "/students/register";
-const loginStudent = "/login/basic";
+const userProfile = "/accounts/me";
 
 const links = {
   registerStudent,
-  loginStudent,
+  userProfile,
 };
 export default links;

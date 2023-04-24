@@ -9,9 +9,9 @@ export const register = {
 
 //Login
 
-export const login = {
-  LOGIN_START: "LOGIN_START",
-  LOGIN_SUCCESS: "LOGIN_SUCCESS",
-  LOGIN_ERROR: "LOGIN_ERROR",
+export const userProfile = {
+  USER_PROFILE_START: "USER_PROFILE_START",
+  USER_PROFILE_SUCCESS: "USER_PROFILE_SUCCESS",
+  USER_PROFILE_ERROR: "USER_PROFILE_ERROR",
 };
 //Login

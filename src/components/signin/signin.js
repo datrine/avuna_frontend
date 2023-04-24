@@ -19,15 +19,16 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [overlay, setOverlay] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadings, setLoadings] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState(false);
   const [newemail, setNewEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
 
-  const loginAction = (code) => {
+  const loginAction = async (code) => {
     try {
-      axiosInstance.post("/login/basic", code).then((response) => {
+      await axiosInstance.post("/login/basic", code).then((response) => {
         window.sessionStorage.setItem("token", JSON.stringify(response.data));
         navigate("/home");
       });
@@ -36,16 +37,15 @@ const SignIn = () => {
       setLoading(false);
     }
   };
-  const resetAction = (code) => {
+  const resetAction = async (code) => {
     try {
-      axiosInstance.get(`/accounts/password/recovery/request?email=${newemail}`, code).then((response) => {
-        setLoading(false);
+      await axiosInstance.get(`/accounts/password/recovery/request?email=${newemail}`, code).then((response) => {
+        setLoadings(false);
         setEmailSent(true);
       });
     } catch (error) {
       toast.error(error.response.data.err.msg);
-      console.log(error.response.data);
-      setLoading(false);
+      setLoadings(false);
     }
   };
   return (
@@ -170,14 +170,14 @@ const SignIn = () => {
               <Button
                 buttonText="Verify Email"
                 action={() => {
-                  setLoading(true);
+                  setLoadings(true);
                   const data = { newemail };
                   resetAction(data);
                 }}
                 color="white"
                 bgColor="#066fe0"
                 margin="24px"
-                loading={loading}
+                loading={loadings}
               />
             </>
           )}

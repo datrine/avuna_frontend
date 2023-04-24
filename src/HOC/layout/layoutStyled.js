@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const LayoutStyle = styled.div`
-  width: 84%;
-  margin: 32px auto 0px;
-  max-width: 1269px;
+  width: 89%;
+  margin: 0px auto;
+  max-width: 1350px;
 
   @media screen and (max-width: 500px) {
     width: 93%;
