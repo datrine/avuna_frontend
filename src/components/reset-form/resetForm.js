@@ -12,6 +12,7 @@ import validator from "validator";
 import PasswordReq from "../password-req/passwordReq";
 import Popup from "../popup/popup";
 import CheckMark from "../../assets/check-mark.svg";
+import axios from "axios";
 
 const ResetForm = () => {
   const navigate = useNavigate();
