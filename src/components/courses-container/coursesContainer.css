@@ -1,0 +1,126 @@
+.courses-container-cont {
+  margin-top: 78px;
+}
+
+.courses-head-cont,
+.courses-head-title,
+.courses-head-see {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.courses-head-cont h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #4d4d4d;
+}
+
+.courses-head-title div {
+  width: 31px;
+  height: 31px;
+  background: #dbedff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.courses-head-title div p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #0663c7;
+}
+
+.courses-head-see h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-right: 15px;
+  color: #4d4d4d;
+}
+
+.courses-body-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 28px 0px 0px;
+}
+
+.courses-body-cont > div {
+  width: 31%;
+}
+
+.previous-cont,
+.next-cont {
+  background: transparent !important;
+  width: 14px !important;
+  height: fit-content !important;
+}
+
+.previous-cont {
+  margin-right: 47px !important;
+}
+
+.next-cont {
+  margin-left: 47px !important;
+}
+
+.nextBtns {
+  content: url(../../assets/course-right.svg);
+}
+
+.previousBtns {
+  content: url(../../assets/course-left.svg);
+}
+
+.paginationBtns {
+  display: flex;
+  width: 100%;
+  margin: 30px auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.paginationBtns li {
+  list-style: none;
+  margin: 0px 10px;
+  width: 12px;
+  height: 12px;
+  background: #d9d9d9;
+  border-radius: 50%;
+}
+
+.paginationBtns li a {
+  color: transparent;
+}
+
+.paginationActive {
+  background: #0663c7 !important;
+}
+
+@media screen and (max-width: 500px) {
+  .courses-body-cont {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: unset;
+  }
+
+  .courses-body-cont > div {
+    width: 86%;
+    margin: 0px auto;
+  }
+
+  .courses-head-title {
+    width: 61%;
+  }
+}

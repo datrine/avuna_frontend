@@ -157,6 +157,7 @@
     background-color: #eef5fc;
     left: 0px;
     top: 50px;
+    z-index: 10;
     /* padding: 10px 32px; */
   }
 
@@ -176,8 +177,11 @@
   }
 
   .header-wrap img:first-child {
-    margin-right: 20px;
     display: block;
+  }
+
+  .header-wrap img:last-child {
+    margin-left: 20px;
   }
 
   .mobile-profile-pic {

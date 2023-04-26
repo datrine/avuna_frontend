@@ -1,0 +1,24 @@
+.middle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 74px;
+}
+
+.middle-wrapper {
+  width: 48%;
+}
+
+@media screen and (max-width: 500px) {
+  .middle-container {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: unset;
+  }
+
+  .middle-wrapper {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}

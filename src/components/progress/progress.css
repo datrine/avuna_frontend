@@ -1,0 +1,48 @@
+.progress-container {
+  margin-top: 78px;
+}
+
+.progress-head {
+  display: flex;
+  align-items: center;
+}
+
+.progress-head h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #4d4d4d;
+}
+
+.progress-head div {
+  width: 31px;
+  height: 31px;
+  background: #dbedff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.progress-head div p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #0663c7;
+}
+
+.progress-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 28px 0px 0px;
+}
+
+.progress-body > div {
+  width: 31%;
+}

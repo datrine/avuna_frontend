@@ -1,0 +1,31 @@
+.explore-container {
+  width: 100%;
+  background: #dbedff;
+  margin-top: 124px;
+  padding: 64px 0px;
+}
+
+.explore-container h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  text-align: center;
+  color: #4d4d4d;
+}
+
+.explore-container button {
+  margin: 0px auto;
+  display: block;
+  /* width: 100%; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 16px 54px;
+  margin-top: 24px;
+  border: none;
+  background: #066fe0;
+  border-radius: 8px;
+  color: #f5f7fa;
+}
