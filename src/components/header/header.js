@@ -89,7 +89,7 @@ const Header = () => {
                   <div className="user-pic">
                     <img src={User} alt="user" />
                   </div>
-                  <p>Temitope</p>
+                  <p>{profile?.f_name}</p>
                 </div>
                 <img src={Dropdown} alt="dropdown" />
                 {userProfile ? (
