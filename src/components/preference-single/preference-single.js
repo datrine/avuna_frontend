@@ -17,6 +17,7 @@ import Entrepreneur from "../../svgcomponents/entrepreneur/entrepreneur";
 import InterBuss from "../../svgcomponents/inter-buss/interBuss";
 import SupplyChain from "../../svgcomponents/supply-chain/supplyChain";
 import Button from "../button/button";
+import { useNavigate } from "react-router-dom";
 
 const PreferenceSingle = () => {
   const [marketing, setMarketing] = useState(false);
@@ -36,13 +37,16 @@ const PreferenceSingle = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {}, [categories]);
 
+  const navigate = useNavigate();
+
   return (
-    <Layout>
-      <div className="preference-container">
-        <div className="preference-header">
-          <h2>Tell Us Your Interest</h2>
-          <p>Select the five categories that best represent your interest to personalize your experience.</p>
-        </div>
+    <div className="preference-container">
+      <div className="preference-header">
+        <div className="preference-overlay"></div>
+        <h2>Tell Us Your Interest</h2>
+        <p>Select the five categories that best represent your interest to personalize your experience.</p>
+      </div>
+      <Layout>
         <div className="preference-body">
           <div className="preference-wrapper">
             <InterestSingle
@@ -300,7 +304,7 @@ const PreferenceSingle = () => {
               <Button
                 buttonText="Done"
                 action={() => {
-                  alert("Hello");
+                  navigate("/home");
                 }}
                 disabled={false}
                 bgColor="#066FE0"
@@ -309,8 +313,8 @@ const PreferenceSingle = () => {
             )}
           </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </div>
   );
 };
 

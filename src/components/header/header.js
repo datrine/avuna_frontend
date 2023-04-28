@@ -12,27 +12,25 @@ import DropRight from "../../assets/drop-right.svg";
 import User from "../../assets/user.svg";
 import { NavLink } from "react-router-dom";
 import Layout from "../../HOC/layout/layout";
-import { useDispatch, useSelector } from "react-redux";
-import { userProfileAction } from "../../redux/actions/actions";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const { userProfileSuccess } = useSelector((state) => state.userProfileReducer);
   const [profile, setProfile] = useState("");
   const [mobile, setMobile] = useState(true);
-  useEffect(() => {
-    dispatch(userProfileAction());
-  }, [dispatch]);
 
   const mobileAction = () => {
     setMobile(!mobile);
   };
-
+  let loginToken = window.sessionStorage.getItem("user");
   useEffect(() => {
-    if (userProfileSuccess !== null) {
-      setProfile(userProfileSuccess);
+    if (loginToken === undefined) {
+      setProfile("");
+    } else if (loginToken === null) {
+      setProfile("");
+    } else {
+      let newLoginToken = JSON.parse(loginToken);
+      setProfile(newLoginToken);
     }
-  }, [userProfileSuccess]);
+  }, [loginToken]);
   return (
     <div className="header-wrapper">
       <Layout>

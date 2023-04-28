@@ -22,6 +22,20 @@
   margin-top: 16px;
 }
 
+.single-course-view {
+  display: flex;
+  align-items: center;
+}
+
+.single-course-view p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 9px;
+  color: #0663c7;
+}
+
 .single-course-text .single-course-rating {
   display: flex;
   justify-content: space-between;

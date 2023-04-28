@@ -3,9 +3,10 @@ import "./singleCourse.css";
 import Rating from "../../assets/rating.svg";
 import Layer from "../../assets/layers.svg";
 import Clock from "../../assets/clock.svg";
+import Eye from "../../assets/opened-eye.svg";
 import Button from "../button/button";
 
-const SingleCourse = ({ img, courseText, courseTitle, modules, duration, price }) => {
+const SingleCourse = ({ img, courseText, courseTitle, modules, duration, price, number }) => {
   return (
     <div className="single-course-container">
       <div className="single-course-wrapper">
@@ -17,6 +18,10 @@ const SingleCourse = ({ img, courseText, courseTitle, modules, duration, price }
             <div className="stars">
               <h2>{courseTitle}</h2>
               <img src={Rating} alt="rating" />
+            </div>
+            <div className="single-course-view">
+              <img src={Eye} alt="eye" />
+              <p>{number}</p>
             </div>
           </div>
           <p>{courseText}</p>

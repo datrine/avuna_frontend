@@ -14,6 +14,7 @@ import Lock from "../../assets/lock.svg";
 import ClosedEye from "../../assets/close-eye.svg";
 import OpenedEye from "../../assets/opened-eye.svg";
 import axiosInstance from "../../redux/helper/apiClient";
+import axios from "axios";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -30,7 +31,25 @@ const SignIn = () => {
     try {
       await axiosInstance.post("/login/basic", code).then((response) => {
         window.sessionStorage.setItem("token", JSON.stringify(response.data));
-        navigate("/home");
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${response.data.accessToken}`,
+          },
+        };
+        const url = "https://avuna-backend.onrender.com/api/accounts/me";
+        try {
+          axios.get(url, config).then((response) => {
+            window.sessionStorage.setItem("user", JSON.stringify(response.data));
+            if (response.data.isNewLogin === true) {
+              navigate("/preferences");
+            } else {
+              navigate("/home");
+            }
+          });
+        } catch (error) {
+          toast.error(error.respose.data.err.msg);
+        }
       });
     } catch (error) {
       toast.error(error.response.data.err.msg);

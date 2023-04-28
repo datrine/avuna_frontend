@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import "./verify.css";
 import ClosedEnvelope from "../../assets/closed-envelope.svg";
 import OpenedEnvelope from "../../assets/opened-envelope.svg";
 import Signup from "../../components/signup/signup";
 import Popup from "../../components/popup/popup";
 import Button from "../../components/button/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import FormLayout from "../../HOC/form-layout/form-layout";
 
 const Verify = () => {
   const navigate = useNavigate();
   const [verify, setVerify] = useState(false);
+  function useQuery() {
+    const { search } = useLocation();
+
+    return useMemo(() => new URLSearchParams(search), [search]);
+  }
+  let query = useQuery();
+  const token = query.get("token");
+  useEffect(() => {
+    if (token !== null) {
+      setVerify(true);
+    } else {
+      setVerify(false);
+    }
+  }, [query, token, navigate]);
   return (
     <FormLayout>
       <Signup />
@@ -28,7 +42,7 @@ const Verify = () => {
           <Button
             buttonText="Proceed"
             action={() => {
-              navigate("/preferences");
+              navigate("/login");
             }}
             color="white"
             bgColor="#066fe0"
@@ -38,7 +52,7 @@ const Verify = () => {
           <Button
             buttonText="Proceed"
             action={() => {
-              setVerify(true);
+              navigate("/");
             }}
             color="white"
             bgColor="#066fe0"

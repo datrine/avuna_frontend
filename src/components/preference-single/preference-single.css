@@ -1,28 +1,47 @@
 .preference-container {
-  padding: 80px 0px;
+  padding: 0px 0px 80px;
 }
 
 .preference-header {
   text-align: center;
+  width: 100%;
+  background-image: url(../../assets/interest.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 75px 0px;
+  color: white;
+  margin-bottom: 54px;
+}
+
+.preference-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 52, 52, 0.6);
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .preference-header h2 {
+  position: relative;
+  z-index: 2;
   font-style: normal;
   font-weight: 700;
   font-size: 28px;
   line-height: 36px;
   margin-bottom: 8px;
-  color: var(--primary-color);
 }
 
 .preference-header p {
   font-style: normal;
+  position: relative;
+  z-index: 2;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   width: 45%;
   margin: 8px auto 48px;
-  color: #212121;
 }
 
 .preference-wrapper {
@@ -45,8 +64,8 @@
 }
 
 @media screen and (max-width: 500px) {
-  .preference-container {
-    padding: 40px 0px;
+  .preference-header {
+    background-image: url(../../assets/interest-mobile.png);
   }
 
   .preference-header p {

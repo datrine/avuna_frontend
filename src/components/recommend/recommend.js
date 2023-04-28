@@ -13,6 +13,7 @@ const Recommend = () => {
       duration: "1 hr 25 Mins",
       module: "20 Modules",
       price: "$10.56",
+      number: "244",
     },
     {
       courseTitle: "Lorem Ipsum Sit",
@@ -21,6 +22,7 @@ const Recommend = () => {
       duration: "1 hr 25 Mins",
       module: "20 Modules",
       price: "$10.56",
+      number: "244",
     },
     {
       courseTitle: "Lorem Ipsum Sit",
@@ -29,6 +31,7 @@ const Recommend = () => {
       duration: "1 hr 25 Mins",
       module: "20 Modules",
       price: "$10.56",
+      number: "244",
     },
     {
       courseTitle: "Lorem Ipsum Sit",
@@ -37,6 +40,7 @@ const Recommend = () => {
       duration: "1 hr 25 Mins",
       module: "20 Modules",
       price: "$10.56",
+      number: "244",
     },
     {
       courseTitle: "Lorem Ipsum Sit",
@@ -45,6 +49,7 @@ const Recommend = () => {
       duration: "1 hr 25 Mins",
       module: "20 Modules",
       price: "$10.56",
+      number: "244",
     },
     {
       courseTitle: "Lorem Ipsum Sit",
@@ -53,6 +58,7 @@ const Recommend = () => {
       duration: "1 hr 25 Mins",
       module: "20 Modules",
       price: "$10.56",
+      number: "244",
     },
   ];
   const [pageNumber, setPageNumber] = useState(0);
@@ -84,7 +90,15 @@ const Recommend = () => {
       {data?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
         return (
           <div key={index}>
-            <SingleCourse img={item.courseImg} courseTitle={item.courseTitle} courseText={item.courseText} duration={item.duration} modules={item.module} price={item.price} />
+            <SingleCourse
+              number={item.number}
+              img={item.courseImg}
+              courseTitle={item.courseTitle}
+              courseText={item.courseText}
+              duration={item.duration}
+              modules={item.module}
+              price={item.price}
+            />
           </div>
         );
       })}

@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./welcome.css";
 import Button from "../button/button";
 import Layout from "../../HOC/layout/layout";
 import Close from "../../svgcomponents/close/close";
 import Arrow from "../../assets/right-arrow.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { userProfileAction } from "../../redux/actions/actions";
 
 const Welcome = () => {
   const [newCourse, setNewCourse] = useState(true);
-  const dispatch = useDispatch();
-  const { userProfileSuccess } = useSelector((state) => state.userProfileReducer);
   const [profile, setProfile] = useState("");
+  let loginToken = window.sessionStorage.getItem("user");
   useEffect(() => {
-    dispatch(userProfileAction());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (userProfileSuccess !== null) {
-      setProfile(userProfileSuccess);
+    if (loginToken === undefined) {
+      setProfile("");
+    } else if (loginToken === null) {
+      setProfile("");
+    } else {
+      let newLoginToken = JSON.parse(loginToken);
+      setProfile(newLoginToken);
     }
-  }, [userProfileSuccess]);
+  }, [loginToken]);
+  console.log(profile);
   return (
     <div className="welcome-wrapper">
       <div className="welcome-overlay"></div>

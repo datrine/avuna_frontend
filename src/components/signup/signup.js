@@ -112,12 +112,13 @@ const Signup = () => {
   useEffect(() => {
     if (registerSuccess !== null) {
       setLoading(false);
-      toast.success("Created Successfully");
+      // toast.success("Created Successfully");
+      navigate("/verify");
     } else if (registerError !== null) {
       setLoading(false);
       toast.error(registerError.msg);
     }
-  }, [registerSuccess, registerError]);
+  }, [registerSuccess, registerError, navigate]);
   return (
     <div className="signup-cont">
       <ToastContainer />
