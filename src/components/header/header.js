@@ -16,6 +16,7 @@ import Layout from "../../HOC/layout/layout";
 const Header = () => {
   const [profile, setProfile] = useState("");
   const [mobile, setMobile] = useState(true);
+  const [userProfile, setUserProfile] = useState(false);
 
   const mobileAction = () => {
     setMobile(!mobile);
@@ -79,14 +80,23 @@ const Header = () => {
                 <NavLink to="about">Contact Us</NavLink>
                 <img src={DropRight} alt="dropdown" />
               </div>
-              <div className="profile-pic">
+              <div
+                className="profile-pic"
+                onClick={() => {
+                  setUserProfile(!userProfile);
+                }}>
                 <div className="">
                   <div className="user-pic">
                     <img src={User} alt="user" />
                   </div>
-                  <p>{profile?.f_name}</p>
+                  <p>Temitope</p>
                 </div>
                 <img src={Dropdown} alt="dropdown" />
+                {userProfile ? (
+                  <div className="profile-pic-drop">
+                    <h2>Hello World</h2>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

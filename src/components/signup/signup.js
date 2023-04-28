@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import Inputs from "../inputs/inputs";
 import Button from "../button/button";
@@ -12,6 +12,7 @@ import ClosedEye from "../../assets/close-eye.svg";
 import OpenedEye from "../../assets/opened-eye.svg";
 import PasswordReq from "../password-req/passwordReq";
 import validator from "validator";
+import axiosInstance from "../../redux/helper/apiClient";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -186,7 +187,7 @@ const Signup = () => {
               l_name,
               password,
             };
-            dispatch(registeration(data));
+            registeration(data);
             setLoading(true);
           }}
           color="white"
