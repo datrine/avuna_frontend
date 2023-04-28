@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./signup.css";
 import Inputs from "../inputs/inputs";
 import Button from "../button/button";
-import { registeration } from "../../redux/actions/actions";
 import SignupWith from "../signup-with/signupWith";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailLogo from "../../assets/email.svg";
@@ -17,8 +15,6 @@ import validator from "validator";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { registerSuccess, registerError } = useSelector((state) => state.registerReducer);
   const [email, setEmail] = useState("");
   const [l_name, setLastName] = useState("");
   const [f_name, setFirstName] = useState("");
@@ -109,16 +105,18 @@ const Signup = () => {
     setPassword(e.target.value);
   };
 
-  useEffect(() => {
-    if (registerSuccess !== null) {
+  const registeration = async (code) => {
+    try {
+      await axiosInstance.post("/students/register", code).then((response) => {
+        setLoading(false);
+        navigate("/verify");
+      });
+    } catch (error) {
+      toast.error(error.response.data.err.msg);
       setLoading(false);
-      // toast.success("Created Successfully");
-      navigate("/verify");
-    } else if (registerError !== null) {
-      setLoading(false);
-      toast.error(registerError.msg);
     }
-  }, [registerSuccess, registerError, navigate]);
+  };
+
   return (
     <div className="signup-cont">
       <ToastContainer />
