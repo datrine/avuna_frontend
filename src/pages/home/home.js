@@ -9,6 +9,7 @@ import New from "../../components/new/new";
 import Starter from "../../components/starter/starter";
 import Recommended from "../../components/recommended/recommended";
 import Middle from "../../components/middle/middle";
+import Footer from "../../components/footer/footer";
 
 const Home = () => {
   const myref = useRef();
@@ -27,6 +28,7 @@ const Home = () => {
       <Recommended />
       <New />
       <Starter />
+      <Footer />
     </div>
   );
 };

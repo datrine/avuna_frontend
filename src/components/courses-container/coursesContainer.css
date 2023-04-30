@@ -3,11 +3,15 @@
 }
 
 .courses-head-cont,
-.courses-head-title,
 .courses-head-see {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.courses-head-title {
+  display: flex;
+  align-items: center;
 }
 
 .courses-head-cont h2 {
@@ -36,6 +40,10 @@
   font-size: 18px;
   line-height: 28px;
   color: #0663c7;
+}
+
+.courses-head-see {
+  cursor: pointer;
 }
 
 .courses-head-see h2 {
@@ -89,6 +97,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  padding-left: 0px;
 }
 
 .paginationBtns li {
@@ -122,5 +131,9 @@
 
   .courses-head-title {
     width: 61%;
+  }
+
+  .courses-head-cont h2 {
+    font-size: 20px;
   }
 }

@@ -1,0 +1,56 @@
+.inprogress-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.inprogress-header h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #4d4d4d;
+}
+
+.inprogress-header div {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 10px;
+  background: #eef5fc;
+}
+
+.inprogress-header div p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: #0663c7;
+}
+
+/* .inprogress-body {
+  background-color: green;
+} */
+
+.inprogress-body-single {
+  width: 32%;
+  margin-bottom: 32px;
+  margin-right: 25px;
+  display: inline-flex;
+}
+
+.inprogress-body-single:nth-child(3n) {
+  margin-right: 0px;
+}
+
+@media screen and (max-width: 500px) {
+  .inprogress-body-single {
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 24px;
+    display: block;
+  }
+}

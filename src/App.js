@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { store } from "./store";
 import Home from "./pages/home/home";
 import Reset from "./pages/reset-password/reset";
+import MyCourses from "./pages/my-courses/myCourses";
 
 const AppWrapper = () => {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/preferences" element={<Preferences />} />
             <Route path="/home" element={<Home />} />
             <Route path="/reset-password" element={<Reset />} />
+            <Route path="/my-courses" element={<MyCourses />} />
           </Routes>
         </div>
       </motion.div>

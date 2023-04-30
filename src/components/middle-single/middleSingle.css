@@ -53,4 +53,8 @@
     flex-direction: column;
     justify-content: unset;
   }
+
+  .middle-single-text h2 {
+    font-size: 20px;
+  }
 }

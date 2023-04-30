@@ -7,7 +7,7 @@ import CourseCard from "../../assets/course-card.png";
 const Recommend = () => {
   const data = [
     {
-      courseTitle: "Lorem Ipsum Sit",
+      courseTitle: "Mastering Social Media Marketing: Strategies for Success",
       courseImg: CourseCard,
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
@@ -16,7 +16,7 @@ const Recommend = () => {
       number: "244",
     },
     {
-      courseTitle: "Lorem Ipsum Sit",
+      courseTitle: "Mastering Social Media Marketing: Strategies for Success",
       courseImg: CourseCard,
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
@@ -25,7 +25,7 @@ const Recommend = () => {
       number: "244",
     },
     {
-      courseTitle: "Lorem Ipsum Sit",
+      courseTitle: "Mastering Social Media Marketing: Strategies for Success",
       courseImg: CourseCard,
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
@@ -34,7 +34,7 @@ const Recommend = () => {
       number: "244",
     },
     {
-      courseTitle: "Lorem Ipsum Sit",
+      courseTitle: "Mastering Social Media Marketing: Strategies for Success",
       courseImg: CourseCard,
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
@@ -43,7 +43,7 @@ const Recommend = () => {
       number: "244",
     },
     {
-      courseTitle: "Lorem Ipsum Sit",
+      courseTitle: "Mastering Social Media Marketing: Strategies for Success",
       courseImg: CourseCard,
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
@@ -52,7 +52,7 @@ const Recommend = () => {
       number: "244",
     },
     {
-      courseTitle: "Lorem Ipsum Sit",
+      courseTitle: "Mastering Social Media Marketing: Strategies for Success",
       courseImg: CourseCard,
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",

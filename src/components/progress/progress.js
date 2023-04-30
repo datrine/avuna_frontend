@@ -3,8 +3,10 @@ import "./progress.css";
 import SingleProgress from "../single-progress/singleProgess";
 import CourseImg from "../../assets/course-img.png";
 import CoursesContainer from "../courses-container/coursesContainer";
+import { useNavigate } from "react-router-dom";
 
 const Progress = () => {
+  const navigate = useNavigate();
   const data = [
     {
       img: CourseImg,
@@ -80,7 +82,14 @@ const Progress = () => {
   const pagesVisited = pageNumber * usersPerPage;
   const pageCount = Math.ceil(data.length / usersPerPage);
   return (
-    <CoursesContainer title="InProgress" pageCount={pageCount} setPageNumber={setPageNumber} pageNumber={pageNumber}>
+    <CoursesContainer
+      title="InProgress"
+      action={() => {
+        navigate("/my-courses");
+      }}
+      pageCount={pageCount}
+      setPageNumber={setPageNumber}
+      pageNumber={pageNumber}>
       {data?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
         return (
           <div key={index}>

@@ -9,14 +9,18 @@ import Notification from "../../assets/notification.svg";
 import Close from "../../assets/times.svg";
 import Dropdown from "../../assets/dropdown.svg";
 import DropRight from "../../assets/drop-right.svg";
-import User from "../../assets/user.svg";
 import { NavLink } from "react-router-dom";
 import Layout from "../../HOC/layout/layout";
+import ProfileDropdown from "../profile-dropdown/profileDropdown";
+import User from "../user/user";
+import OutsideClick from "../outside-click/outsideClick";
+import CompanyDropdown from "../company-dropdown/companyDropdown";
 
 const Header = () => {
   const [profile, setProfile] = useState("");
   const [mobile, setMobile] = useState(true);
   const [userProfile, setUserProfile] = useState(false);
+  const [company, setCompany] = useState(false);
 
   const mobileAction = () => {
     setMobile(!mobile);
@@ -46,21 +50,31 @@ const Header = () => {
           <div className={!mobile ? "header-conts" : "header-cont"}>
             <div className="mobile-profile-pic">
               <div className="">
-                <div className="user-pic">
-                  <img src={User} alt="user" />
-                </div>
+                <User />
                 <p>{profile?.f_name}</p>
               </div>
               <img src={DropRight} alt="dropdown" />
             </div>
             <div className="nav-links">
-              <div className="nav-link">
-                <NavLink to="about">Company</NavLink>
+              <div
+                className="nav-link"
+                onClick={() => {
+                  setCompany(!company);
+                }}>
+                <p>Company</p>
                 <img src={Dropdown} alt="dropdown" className="img-dropdown" />
                 <img src={DropRight} alt="dropdown" className="drop-right" />
+                {company ? (
+                  <OutsideClick
+                    onClickOutside={() => {
+                      setCompany(false);
+                    }}>
+                    <CompanyDropdown />
+                  </OutsideClick>
+                ) : null}
               </div>
               <div className="nav-link">
-                <NavLink to="about">Courses</NavLink>
+                <p>Courses</p>
                 <img src={Dropdown} alt="dropdown" className="img-dropdown" />
                 <img src={DropRight} alt="dropdown" className="drop-right" />
               </div>
@@ -86,16 +100,17 @@ const Header = () => {
                   setUserProfile(!userProfile);
                 }}>
                 <div className="">
-                  <div className="user-pic">
-                    <img src={User} alt="user" />
-                  </div>
+                  <User />
                   <p>{profile?.f_name}</p>
                 </div>
                 <img src={Dropdown} alt="dropdown" />
                 {userProfile ? (
-                  <div className="profile-pic-drop">
-                    <h2>Hello World</h2>
-                  </div>
+                  <OutsideClick
+                    onClickOutside={() => {
+                      setUserProfile(false);
+                    }}>
+                    <ProfileDropdown name={profile?.l_name + " " + profile?.f_name} user={profile} />
+                  </OutsideClick>
                 ) : null}
               </div>
             </div>

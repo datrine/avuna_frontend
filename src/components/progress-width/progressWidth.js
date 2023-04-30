@@ -5,7 +5,7 @@ import styled from "styled-components";
 const ProgressWidth = ({ width }) => {
   const ProgressWidthConts = styled.div`
     width: ${width};
-    background: #066fe0;
+    background: ${width === "100" ? "#27AE60" : "#066fe0"};
     border-radius: 70px;
     height: 100%;
   `;

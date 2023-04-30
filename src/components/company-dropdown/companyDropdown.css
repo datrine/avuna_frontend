@@ -1,0 +1,27 @@
+.company-dropdown {
+  width: 101px;
+  position: absolute;
+  top: 57px;
+  left: 0px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px 0px;
+}
+
+.company-dropdown-cont {
+  width: 68%;
+  margin: 0px auto;
+}
+
+.company-dropdown-cont a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  color: #4d4d4d;
+}
+
+.company-dropdown-cont a:last-child {
+  margin-bottom: 0px;
+}

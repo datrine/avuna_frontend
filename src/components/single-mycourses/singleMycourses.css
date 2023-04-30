@@ -1,0 +1,57 @@
+.single-mycourses-container {
+  width: 100%;
+  border-radius: 8px;
+  background: #eef5fc;
+  padding: 16px 0px;
+}
+
+.single-mycourses-wrapper {
+  width: 93%;
+  margin: 0px auto;
+}
+
+.single-mycourses-wrapper > img {
+  width: 100%;
+}
+
+.single-mycourses-wrapper > h2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 4px;
+  color: #89939e;
+}
+
+.single-mycourses-wrapper > h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: #212121;
+}
+
+.single-mycourses-progress {
+  display: flex;
+  align-items: center;
+}
+
+.single-mycourses-progress p {
+  margin-left: 14px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #066fe0;
+}
+
+.single-mycourses-completed {
+  color: #4d4d4d !important;
+}
+
+@media screen and (max-width: 500px) {
+  .single-mycourses-wrapper > h1 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

@@ -18,6 +18,7 @@ import InterBuss from "../../svgcomponents/inter-buss/interBuss";
 import SupplyChain from "../../svgcomponents/supply-chain/supplyChain";
 import Button from "../button/button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const PreferenceSingle = () => {
   const [marketing, setMarketing] = useState(false);
@@ -34,8 +35,20 @@ const PreferenceSingle = () => {
   const [entrepreneurship, setEntrepreneurship] = useState(false);
   const [international, setInternational] = useState(false);
   const [supply, setSupply] = useState(false);
+  const [token, setToken] = useState("");
   const [categories, setCategories] = useState([]);
   useEffect(() => {}, [categories]);
+  let loginToken = window.sessionStorage.getItem("token");
+  useEffect(() => {
+    if (loginToken === undefined) {
+      setToken("");
+    } else if (loginToken === null) {
+      setToken("");
+    } else {
+      let newLoginToken = JSON.parse(loginToken);
+      setToken(newLoginToken);
+    }
+  }, [loginToken]);
 
   const navigate = useNavigate();
 
@@ -303,8 +316,21 @@ const PreferenceSingle = () => {
             ) : (
               <Button
                 buttonText="Done"
-                action={() => {
-                  navigate("/home");
+                action={async () => {
+                  const config = {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token?.accessToken}`,
+                    },
+                  };
+                  const url = "https://avuna-backend.onrender.com/api/preferences/add";
+                  try {
+                    await axios.post(url, config).then((response) => {
+                      navigate("/home");
+                    });
+                  } catch (error) {
+                    if (error.response.data.err.msg === "Access token not valid") navigate("/login");
+                  }
                 }}
                 disabled={false}
                 bgColor="#066FE0"

@@ -1,0 +1,66 @@
+.profile-drop {
+  position: absolute;
+  top: 68px;
+  left: 0;
+  width: 205px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px 0px;
+  z-index: 10;
+}
+
+.profile-drop-cont {
+  width: 84%;
+  margin: 0px auto;
+}
+
+.profile-manage {
+  display: flex;
+  align-items: center;
+}
+
+.profile-manage-name h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #212121;
+}
+
+.profile-manage-name a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration-line: underline;
+  color: #066fe0;
+  margin-top: 2px;
+}
+
+.profile-drop-links {
+  margin-top: 34px;
+}
+
+.profile-drop-link {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.profile-drop-link:first-child {
+  margin-top: 0px;
+}
+
+.profile-drop-link:last-child {
+  margin-top: 44px;
+}
+
+.profile-drop-link p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-left: 10px;
+  color: #4d4d4d;
+}

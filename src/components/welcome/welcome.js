@@ -4,6 +4,7 @@ import Button from "../button/button";
 import Layout from "../../HOC/layout/layout";
 import Close from "../../svgcomponents/close/close";
 import Arrow from "../../assets/right-arrow.svg";
+import Overlay from "../overlay/overlay";
 
 const Welcome = () => {
   const [newCourse, setNewCourse] = useState(true);
@@ -19,17 +20,16 @@ const Welcome = () => {
       setProfile(newLoginToken);
     }
   }, [loginToken]);
-  console.log(profile);
   return (
     <div className="welcome-wrapper">
-      <div className="welcome-overlay"></div>
+      <Overlay />
       <div className="welcome-cont">
         {newCourse ? (
           <div className="welcome-new-course">
             <Layout>
               <div className="welcome-new-single">
                 <h2>
-                  Explore New Courses Now in <span>Finance and Accounting</span>
+                  <span>Explore</span> New Courses Now in <span>Finance and Accounting</span>
                 </h2>
                 <img src={Arrow} alt="arrow" />
                 <div>

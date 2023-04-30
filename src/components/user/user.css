@@ -1,0 +1,10 @@
+.user-pic {
+  width: 40px;
+  height: 40px;
+  background: #066fe0;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
