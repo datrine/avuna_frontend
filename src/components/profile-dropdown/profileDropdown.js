@@ -7,7 +7,6 @@ import Analysis from "../../assets/analysis.svg";
 import Certificate from "../../assets/certificate.svg";
 import Help from "../../assets/help.svg";
 import Logout from "../../assets/logout.svg";
-import axiosInstance from "../../redux/helper/apiClient";
 import axios from "axios";
 
 const ProfileDropdown = ({ name, user }) => {
