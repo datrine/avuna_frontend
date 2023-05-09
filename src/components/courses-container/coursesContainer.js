@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import Layout from "../../HOC/layout/layout";
 import SeeAll from "../../assets/see-all.svg";
 
-const CoursesContainer = ({ children, title, pageCount, setPageNumber, action }) => {
+const CoursesContainer = ({ children, title, pageCount, setPageNumber, action, type }) => {
   return (
     <div className="courses-container-cont">
       <Layout>
@@ -17,10 +17,12 @@ const CoursesContainer = ({ children, title, pageCount, setPageNumber, action })
               </div>
             ) : null}
           </div>
-          <div className="courses-head-see" onClick={action}>
-            <h2>See All</h2>
-            <img src={SeeAll} alt="see-all" />
-          </div>
+          {type === "true" ? null : (
+            <div className="courses-head-see" onClick={action}>
+              <h2>See All</h2>
+              <img src={SeeAll} alt="see-all" />
+            </div>
+          )}
         </div>
         <div className="courses-body-cont">{children}</div>
         <ReactPaginate

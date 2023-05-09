@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import registerReducer from "./register";
+import preferenceReducer from "./preferences";
 import userProfileReducer from "./userProfile";
 
 const appReducer = combineReducers({
-  registerReducer: registerReducer,
+  preferenceReducer: preferenceReducer,
   userProfileReducer: userProfileReducer,
 });
 const rootReducer = (state, action) => {

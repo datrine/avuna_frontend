@@ -10,6 +10,8 @@ import { store } from "./store";
 import Home from "./pages/home/home";
 import Reset from "./pages/reset-password/reset";
 import MyCourses from "./pages/my-courses/myCourses";
+import Courses from "./pages/courses/courses";
+import Profile from "./pages/profile/profile";
 
 const AppWrapper = () => {
   return (
@@ -44,6 +46,9 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/reset-password" element={<Reset />} />
             <Route path="/my-courses" element={<MyCourses />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/my-courses" element={<Preferences />} />
           </Routes>
         </div>
       </motion.div>

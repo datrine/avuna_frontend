@@ -8,6 +8,7 @@ import Twitter from "../../assets/twitter-white.svg";
 import Facebook from "../../assets/facebook-white.svg";
 
 const Footer = () => {
+  const date = new Date();
   return (
     <div className="footer-container">
       <div className="footer-body">
@@ -53,7 +54,7 @@ const Footer = () => {
       <div className="footer-copyright">
         <Layout>
           <div className="footer-copy">
-            <p>© 2022 Avuna Business Academy. All Rights Reserved</p>
+            <p>© {date?.getFullYear()} Avuna Business Academy. All Rights Reserved</p>
             <NavLink to="/home">Terms & Conditions</NavLink>
           </div>
         </Layout>

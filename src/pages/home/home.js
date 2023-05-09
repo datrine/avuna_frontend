@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./home.css";
 import Header from "../../components/header/header";
 import Welcome from "../../components/welcome/welcome";
@@ -10,8 +10,34 @@ import Starter from "../../components/starter/starter";
 import Recommended from "../../components/recommended/recommended";
 import Middle from "../../components/middle/middle";
 import Footer from "../../components/footer/footer";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const Home = () => {
+  const [token, setToken] = useState("");
+  const [preferences, setPreferences] = useState("");
+
+  const [cookies] = useCookies(["user"]);
+  useEffect(() => {
+    setToken(cookies.Name);
+  }, [cookies]);
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token?.accessToken}`,
+    },
+  };
+  console.log(preferences);
+  const url = "https://avuna-backend.onrender.com/api/preferences";
+  axios
+    .get(url, config)
+    .then((response) => {
+      setPreferences(response.data.preferences);
+    })
+    .catch((error) => {
+      console.log(error.response.data.err.msg);
+    });
+
   const myref = useRef();
   useEffect(() => {
     myref.current.scrollTo(0, 0);

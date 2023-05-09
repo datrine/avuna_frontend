@@ -19,6 +19,7 @@ const PagesBannerStyled = styled.div`
     z-index: 5;
     position: relative;
     color: #ffffff;
+    text-align: center;
   }
 `;
 

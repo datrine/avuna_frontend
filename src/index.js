@@ -4,12 +4,15 @@ import "./index.css";
 import AppWrapper from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <AppWrapper />
-  </BrowserRouter>
+  <CookiesProvider>
+    <BrowserRouter>
+      <AppWrapper />
+    </BrowserRouter>
+  </CookiesProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -21,7 +21,7 @@ const Recommend = () => {
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
       module: "20 Modules",
-      price: "$10.56",
+      price: "Free",
       number: "244",
     },
     {
@@ -39,7 +39,7 @@ const Recommend = () => {
       courseText: "Lorem ipsum dolor sit amet consectetur. Feugia t blandit turpis malesuada ultrices ametmauris in in malesuada ultrices am.",
       duration: "1 hr 25 Mins",
       module: "20 Modules",
-      price: "$10.56",
+      price: "Free",
       number: "244",
     },
     {
@@ -86,7 +86,7 @@ const Recommend = () => {
   const pagesVisited = pageNumber * usersPerPage;
   const pageCount = Math.ceil(data.length / usersPerPage);
   return (
-    <CoursesContainer title="Recommended Courses" pageCount={pageCount} setPageNumber={setPageNumber} pageNumber={pageNumber}>
+    <CoursesContainer title="Recommended Courses" pageCount={pageCount} setPageNumber={setPageNumber}>
       {data?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
         return (
           <div key={index}>

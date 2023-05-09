@@ -19,6 +19,8 @@ import SupplyChain from "../../svgcomponents/supply-chain/supplyChain";
 import Button from "../button/button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PreferenceSingle = () => {
   const [marketing, setMarketing] = useState(false);
@@ -35,6 +37,7 @@ const PreferenceSingle = () => {
   const [entrepreneurship, setEntrepreneurship] = useState(false);
   const [international, setInternational] = useState(false);
   const [supply, setSupply] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [token, setToken] = useState("");
   const [categories, setCategories] = useState([]);
   useEffect(() => {}, [categories]);
@@ -54,6 +57,7 @@ const PreferenceSingle = () => {
 
   return (
     <div className="preference-container">
+      <ToastContainer />
       <div className="preference-header">
         <div className="preference-overlay"></div>
         <h2>Tell Us Your Interest</h2>
@@ -317,6 +321,7 @@ const PreferenceSingle = () => {
               <Button
                 buttonText="Done"
                 action={async () => {
+                  setLoading(true);
                   const config = {
                     headers: {
                       "Content-Type": "application/json",
@@ -324,15 +329,27 @@ const PreferenceSingle = () => {
                     },
                   };
                   const url = "https://avuna-backend.onrender.com/api/preferences/add";
+                  const data = {
+                    preferences: {
+                      courses: categories,
+                    },
+                  };
                   try {
-                    await axios.post(url, config).then((response) => {
+                    await axios.post(url, data, config).then((response) => {
                       navigate("/home");
+                      setLoading(false);
                     });
                   } catch (error) {
-                    if (error.response.data.err.msg === "Access token not valid") navigate("/login");
+                    setLoading(false);
+                    if (error.response.data.err.msg === "Access token not valid") {
+                      navigate("/login");
+                    } else {
+                      toast.error(error.response.data.err.msg);
+                    }
                   }
                 }}
                 disabled={false}
+                loading={loading}
                 bgColor="#066FE0"
                 color="white"
               />

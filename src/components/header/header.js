@@ -51,7 +51,7 @@ const Header = () => {
             <div className="mobile-profile-pic">
               <div className="">
                 <User />
-                <p>{profile?.f_name}</p>
+                <p>{profile?.l_name + " " + profile?.f_name}</p>
               </div>
               <img src={DropRight} alt="dropdown" />
             </div>
@@ -73,11 +73,7 @@ const Header = () => {
                   </OutsideClick>
                 ) : null}
               </div>
-              <div className="nav-link">
-                <p>Courses</p>
-                <img src={Dropdown} alt="dropdown" className="img-dropdown" />
-                <img src={DropRight} alt="dropdown" className="drop-right" />
-              </div>
+              <NavLink to="/courses">Courses</NavLink>
               <NavLink to="about">Resources</NavLink>
               <NavLink to="about">Grant</NavLink>
             </div>
@@ -99,7 +95,7 @@ const Header = () => {
                 onClick={() => {
                   setUserProfile(!userProfile);
                 }}>
-                <div className="">
+                <div className="profile-pics">
                   <User />
                   <p>{profile?.f_name}</p>
                 </div>

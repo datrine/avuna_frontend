@@ -15,6 +15,7 @@ import ClosedEye from "../../assets/close-eye.svg";
 import OpenedEye from "../../assets/opened-eye.svg";
 import axiosInstance from "../../redux/helper/apiClient";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -26,11 +27,14 @@ const SignIn = () => {
   const [passwordType, setPasswordType] = useState(false);
   const [newemail, setNewEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
+  const [cookies, setCookie] = useCookies(["user"]);
+  console.log(cookies);
 
   const loginAction = async (code) => {
     try {
       await axiosInstance.post("/login/basic", code).then((response) => {
         window.sessionStorage.setItem("token", JSON.stringify(response.data));
+        setCookie("Name", response.data);
         const config = {
           headers: {
             "Content-Type": "application/json",

@@ -14,7 +14,7 @@ const ProfileDropdown = ({ name, user }) => {
     {
       img: Courses,
       name: "My Courses",
-      link: "/",
+      link: "/my-courses",
     },
     {
       img: Courses,

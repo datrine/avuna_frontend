@@ -107,12 +107,16 @@
   display: flex;
   position: relative;
   /* justify-content: space-between; */
+}
+
+.profile-pic .profile-pics {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
-.profile-pic > div {
-  display: flex;
-  align-items: center;
+.profile-pic > img {
+  cursor: pointer;
 }
 
 .profile-pic p {

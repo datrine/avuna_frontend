@@ -1,0 +1,70 @@
+.user-profile-side-body {
+  width: 100%;
+}
+
+.user-profile-single,
+.user-profile-active {
+  width: 100%;
+  padding: 16px 0px;
+  transition: 1s all ease;
+  margin-bottom: 16px;
+}
+
+.user-profile-active {
+  background: #066fe0;
+  border-radius: 8px;
+}
+
+.user-profile-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 82%;
+  margin: 0px auto;
+}
+
+.user-profile-cont div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-profile-single p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #066fe0;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.user-profile-active p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #ffffff;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.user-profile-logout {
+  display: flex;
+  width: 100%;
+  background: #fff1f0;
+  border-radius: 8px;
+  padding: 10px 13px;
+  box-sizing: border-box;
+  margin-top: 26px;
+}
+
+.user-profile-logout p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  margin-left: 13px;
+  color: #e02b1d;
+  cursor: pointer;
+}
