@@ -59,14 +59,14 @@ const Header = () => {
               </div>
               <img src={DropRight} alt="dropdown" />
             </div>
-            {userProfile ? (
+            {/* {userProfile ? (
               <OutsideClick
                 onClickOutside={() => {
                   setUserProfile(false);
                 }}>
                 <ProfileDropdown name={profile?.l_name + " " + profile?.f_name} user={profile} />
               </OutsideClick>
-            ) : null}
+            ) : null} */}
             <div className="nav-links">
               <NavLink to="/home">Home</NavLink>
               <div
