@@ -26,6 +26,8 @@ const ProfileInfo = ({ profile }) => {
   const [country, setCountry] = useState("");
   const [age, setAge] = useState("");
   const [sex, setSex] = useState("");
+
+  const formData = new FormData();
   return (
     <div className="profile-info-cont" ref={myref}>
       <ToastContainer />
@@ -38,9 +40,42 @@ const ProfileInfo = ({ profile }) => {
           </div>
         </div>
         <label>
-          <input type="file" />
+          <input
+            type="file"
+            onChange={(e) => {
+              formData.append("file", e.target.files[0]);
+            }}
+          />
           Change Picture
         </label>
+        <button
+          onClick={async () => {
+            const config = {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token?.accessToken}`,
+              },
+            };
+            const url = "https://avuna-backend.onrender.com/api/accounts/me/profile/edit";
+            const data = {
+              prof_pic: formData,
+            };
+            try {
+              await axios.post(url, data, config).then((response) => {
+                toast.success("Changed Successfully");
+                setLoading(false);
+              });
+            } catch (error) {
+              setLoading(false);
+              if (error.response.data.err.msg === "Access token not valid") {
+                navigate("/login");
+              } else {
+                toast.error(error.response.data.err.msg);
+              }
+            }
+          }}>
+          Submit
+        </button>
       </div>
       <div className="profile-info-body">
         <div className="profile-info-form">

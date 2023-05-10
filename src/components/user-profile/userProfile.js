@@ -3,7 +3,6 @@ import "./userProfile.css";
 import Layout from "../../HOC/layout/layout";
 import ProfileSide from "../profile-side/profileSide";
 import ProfileUser from "../../svgcomponents/profile-user/profileUser";
-import Cart from "../../svgcomponents/cart/cart";
 import CreditCard from "../../svgcomponents/credit-card/creditCard";
 import ProfileInfo from "../profile-info/profileInfo";
 import axios from "axios";
@@ -58,8 +57,8 @@ const UserProfile = () => {
       img: <ProfileUser color={activeProfile === "My Courses" ? "white" : "#066FE0"} />,
     },
     {
-      title: "My Cart",
-      img: <Cart color={activeProfile === "My Cart" ? "white" : "#066FE0"} />,
+      title: "Wishlist",
+      img: <ProfileUser color={activeProfile === "My Cart" ? "white" : "#066FE0"} />,
     },
     {
       title: "Payment Information",
@@ -68,10 +67,6 @@ const UserProfile = () => {
     {
       title: "Purchase History",
       img: <ProfileUser color={activeProfile === "Purchase History" ? "white" : "#066FE0"} />,
-    },
-    {
-      title: "Bookmark",
-      img: <ProfileUser color={activeProfile === "Bookmark" ? "white" : "#066FE0"} />,
     },
   ];
   return (

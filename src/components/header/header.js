@@ -48,14 +48,27 @@ const Header = () => {
             </div>
           </div>
           <div className={!mobile ? "header-conts" : "header-cont"}>
-            <div className="mobile-profile-pic">
+            <div
+              className="mobile-profile-pic"
+              onClick={() => {
+                setUserProfile(!userProfile);
+              }}>
               <div className="">
                 <User />
                 <p>{profile?.l_name + " " + profile?.f_name}</p>
               </div>
               <img src={DropRight} alt="dropdown" />
             </div>
+            {userProfile ? (
+              <OutsideClick
+                onClickOutside={() => {
+                  setUserProfile(false);
+                }}>
+                <ProfileDropdown name={profile?.l_name + " " + profile?.f_name} user={profile} />
+              </OutsideClick>
+            ) : null}
             <div className="nav-links">
+              <NavLink to="/home">Home</NavLink>
               <div
                 className="nav-link"
                 onClick={() => {
@@ -64,15 +77,15 @@ const Header = () => {
                 <p>Company</p>
                 <img src={Dropdown} alt="dropdown" className="img-dropdown" />
                 <img src={DropRight} alt="dropdown" className="drop-right" />
-                {company ? (
-                  <OutsideClick
-                    onClickOutside={() => {
-                      setCompany(false);
-                    }}>
-                    <CompanyDropdown />
-                  </OutsideClick>
-                ) : null}
               </div>
+              {company ? (
+                <OutsideClick
+                  onClickOutside={() => {
+                    setCompany(false);
+                  }}>
+                  <CompanyDropdown />
+                </OutsideClick>
+              ) : null}
               <NavLink to="/courses">Courses</NavLink>
               <NavLink to="about">Resources</NavLink>
               <NavLink to="about">Grant</NavLink>

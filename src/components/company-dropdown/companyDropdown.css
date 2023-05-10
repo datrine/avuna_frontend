@@ -25,3 +25,10 @@
 .company-dropdown-cont a:last-child {
   margin-bottom: 0px;
 }
+
+@media screen and (max-width: 500px) {
+  .company-dropdown {
+    width: 100%;
+    position: unset;
+  }
+}
