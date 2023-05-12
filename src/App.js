@@ -12,6 +12,7 @@ import Reset from "./pages/reset-password/reset";
 import MyCourses from "./pages/my-courses/myCourses";
 import Courses from "./pages/courses/courses";
 import Profile from "./pages/profile/profile";
+import CoursesDetail from "./pages/courses-detail/coursesDetail";
 
 const AppWrapper = () => {
   return (
@@ -48,7 +49,8 @@ function App() {
             <Route path="/my-courses" element={<MyCourses />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/profile/my-courses" element={<Preferences />} />
+            {/* <Route path="/profile/my-courses" element={<Preferences />} /> */}
+            <Route path="/courses-detail" element={<CoursesDetail />} />
           </Routes>
         </div>
       </motion.div>

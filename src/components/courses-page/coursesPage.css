@@ -26,6 +26,7 @@
   line-height: 28px;
   margin-left: 10px;
   color: #4d4d4d;
+  text-transform: capitalize;
 }
 
 .courses-page-active {
@@ -51,4 +52,43 @@
 .courses-page-single:nth-child(4n),
 .courses-page-single:first-child {
   margin-left: 0px;
+}
+
+.courses-page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.courses-page-head > h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: #4d4d4d;
+}
+
+.courses-page-search {
+  display: flex;
+  align-items: center;
+  width: 33%;
+  background: #d9d9d9;
+  border-radius: 6px;
+  padding: 10px 16px 10px 20px;
+}
+
+.courses-page-search input {
+  background: transparent;
+  width: 100%;
+  border: none;
+  margin-left: 13px;
+}
+
+.courses-page-search input:focus {
+  background: transparent;
+  border: none;
+  outline: none;
 }

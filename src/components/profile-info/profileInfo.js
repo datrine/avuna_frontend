@@ -43,11 +43,39 @@ const ProfileInfo = ({ profile }) => {
           <input
             type="file"
             onChange={(e) => {
-              formData.append("file", e.target.files[0]);
+              formData.append("prof_pic", e.target.files[0]);
             }}
           />
           Change Picture
         </label>
+        {/* <button
+          onClick={() => {
+            fetch("https://nigeriapropertycentre.com/for-sale/houses/terraced-duplexes/lagos/lekki/ikota/1729893-3-bedrooms-terrace-duplex")
+              .then((response) => response.text())
+              .then((html) => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, "text/html");
+
+                // Extract images
+                const images = doc.querySelectorAll("img");
+                images.forEach((img) => {
+                  console.log(img.src);
+                });
+
+                // Extract videos
+                const videos = doc.querySelectorAll("video");
+                videos.forEach((video) => {
+                  console.log(video.src);
+                });
+
+                // Extract text
+                const text = doc.body.innerText;
+                console.log(text);
+              })
+              .catch((error) => console.error(error));
+          }}>
+          Test
+        </button> */}
         <button
           onClick={async () => {
             const config = {
@@ -57,11 +85,8 @@ const ProfileInfo = ({ profile }) => {
               },
             };
             const url = "https://avuna-backend.onrender.com/api/accounts/me/profile/edit";
-            const data = {
-              prof_pic: formData,
-            };
             try {
-              await axios.post(url, data, config).then((response) => {
+              await axios.post(url, formData, config).then((response) => {
                 toast.success("Changed Successfully");
                 setLoading(false);
               });

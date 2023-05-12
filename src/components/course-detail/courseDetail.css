@@ -1,0 +1,92 @@
+.course-detail-cont {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 76px;
+}
+
+.course-detail-wrapper {
+  width: 66%;
+}
+
+.course-detail-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.course-detail-title h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #0671e0;
+}
+
+.course-detail-title .stars {
+  margin-left: 16px;
+}
+
+.course-detail-title .reviews {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-left: 16px;
+  color: #4d4d4d;
+}
+
+.course-detail-title p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  margin-top: 8px;
+  width: 528px;
+  color: #717171;
+}
+
+.course-detail-action {
+  width: 32%;
+}
+
+.course-detail-price {
+  width: 100%;
+  background: #066fe0;
+  height: 691px;
+}
+
+.course-detail-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 27%;
+}
+
+.course-detail-wrap div {
+  background: #dbedff;
+  border-radius: 8px;
+  padding: 16px 0px;
+  width: 45%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.course-detail-wrap div p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-left: 10px;
+  color: #066fe0;
+}
+
+.course-detail-body {
+  width: 100%;
+  margin-top: 55px;
+}
+
+.course-detail-body img {
+  width: 100%;
+}

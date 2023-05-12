@@ -5,16 +5,22 @@ import Course from "../../assets/course-single.svg";
 import CourseActive from "../../assets/course-active.svg";
 import SingleCourse from "../single-course/singleCourse";
 import CourseCard from "../../assets/course-card.png";
+import Search from "../../assets/search.svg";
+import Filter from "../../assets/filter.svg";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import CoursesContainer from "../courses-container/coursesContainer";
-// import { useNavigate } from "react-router-dom";
+import Loader from "../loader/loader";
+import { useNavigate } from "react-router-dom";
 
 const CoursesPage = () => {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [token, setToken] = useState("");
   const [courses, setCourses] = useState("");
-
+  const [categories, setCategories] = useState([]);
+  const [finishedLoading, setFinishedLoading] = useState(false);
+  const [stillLoading, setStillLoading] = useState(false);
+  console.log(courses);
   const [cookies] = useCookies(["user"]);
   useEffect(() => {
     setToken(cookies.Name);
@@ -26,11 +32,11 @@ const CoursesPage = () => {
         Authorization: `Bearer ${token?.accessToken}`,
       },
     };
-    const url = "https://avuna-backend.onrender.com/api/courses";
+    const url = "https://avuna-backend.onrender.com/api/courses/categories";
     axios
       .get(url, config)
       .then((response) => {
-        setCourses(response.data);
+        setCategories(response.data.categories);
       })
       .catch((error) => {
         console.log(error.response.data.err.msg);
@@ -39,19 +45,6 @@ const CoursesPage = () => {
         //   }
       });
   }, [token]);
-  console.log(courses);
-  const data = [
-    "Marketing",
-    "Digital Marketing",
-    "Business Management",
-    "Sales",
-    "Customer Service",
-    "Project Management",
-    "Human Resource Manangement",
-    "Marketing",
-    "Business Communcation",
-    "Marketing",
-  ];
   const subCourses = [
     {
       courseTitle: "Mastering Social Media Marketing: Strategies for Success",
@@ -61,6 +54,7 @@ const CoursesPage = () => {
       module: "20 Modules",
       price: "$10.56",
       number: "244",
+      id: 1,
     },
     {
       courseTitle: "Mastering Social Media Marketing: Strategies for Success",
@@ -70,6 +64,7 @@ const CoursesPage = () => {
       module: "20 Modules",
       price: "Free",
       number: "244",
+      id: 1,
     },
     {
       courseTitle: "Mastering Social Media Marketing: Strategies for Success",
@@ -79,6 +74,7 @@ const CoursesPage = () => {
       module: "20 Modules",
       price: "$10.56",
       number: "244",
+      id: 1,
     },
     {
       courseTitle: "Mastering Social Media Marketing: Strategies for Success",
@@ -88,6 +84,7 @@ const CoursesPage = () => {
       module: "20 Modules",
       price: "Free",
       number: "244",
+      id: 1,
     },
     {
       courseTitle: "Mastering Social Media Marketing: Strategies for Success",
@@ -97,6 +94,7 @@ const CoursesPage = () => {
       module: "20 Modules",
       price: "$10.56",
       number: "244",
+      id: 1,
     },
     {
       courseTitle: "Mastering Social Media Marketing: Strategies for Success",
@@ -106,9 +104,10 @@ const CoursesPage = () => {
       module: "20 Modules",
       price: "$10.56",
       number: "244",
+      id: 1,
     },
   ];
-  const [activeCourse, setActiveCourse] = useState(data[0]);
+  const [activeCourse, setActiveCourse] = useState(categories[0]);
   const [pageNumber, setPageNumber] = useState(0);
   const [usersPerPage, setUsersPerPage] = useState(3);
   const [windowSize, setWindowSize] = useState([window.innerWidth]);
@@ -137,12 +136,33 @@ const CoursesPage = () => {
     <div className="courses-page-container">
       <Layout>
         <div className="courses-page-header">
-          {data?.map((item, index) => {
+          {categories?.map((item, index) => {
             return (
               <div
                 key={index}
-                onClick={() => {
+                onClick={async () => {
                   setActiveCourse(item);
+                  setStillLoading(true);
+                  const config = {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token?.accessToken}`,
+                    },
+                  };
+                  const url = `https://avuna-backend.onrender.com/api/courses/categories/:${item}/courses`;
+                  axios
+                    .get(url, config)
+                    .then((response) => {
+                      setCourses(response.data.courses);
+                      setStillLoading(false);
+                      setFinishedLoading(true);
+                    })
+                    .catch((error) => {
+                      console.log(error.response.data.err.msg);
+                      if (error.response.data.err.msg === "Access token not valid") {
+                        navigate("/login");
+                      }
+                    });
                 }}
                 className={activeCourse === item ? "courses-page-active" : ""}>
                 <img src={activeCourse === item ? CourseActive : Course} alt="courses" />
@@ -151,28 +171,39 @@ const CoursesPage = () => {
             );
           })}
         </div>
-        <div className="courses-page-body">
-          <div className="courses-page-head">
-            <h2>{activeCourse}</h2>
+        {finishedLoading ? (
+          <div className="courses-page-body">
+            <div className="courses-page-head">
+              <h2>{activeCourse}</h2>
+              <div className="courses-page-search">
+                <img src={Search} alt="search" />
+                <input type="text" placeholder="Search" />
+                <img src={Filter} alt="filter" />
+              </div>
+            </div>
+            <div className="courses-page-all">
+              {subCourses?.map((item, index) => {
+                return (
+                  <div key={index} className="courses-page-single">
+                    <SingleCourse
+                      number={item.number}
+                      img={item.courseImg}
+                      courseTitle={item.courseTitle}
+                      courseText={item.courseText}
+                      duration={item.duration}
+                      modules={item.module}
+                      price={item.price}
+                      action={() => {
+                        navigate(`/courses-detail?id=${item.id}`);
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="courses-page-all">
-            {subCourses?.map((item, index) => {
-              return (
-                <div key={index} className="courses-page-single">
-                  <SingleCourse
-                    number={item.number}
-                    img={item.courseImg}
-                    courseTitle={item.courseTitle}
-                    courseText={item.courseText}
-                    duration={item.duration}
-                    modules={item.module}
-                    price={item.price}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        ) : null}
+        {stillLoading ? <Loader /> : null}
       </Layout>
       <div className="course-pages-all">
         <CoursesContainer title={`Popular In  ${activeCourse}`} type="true" pageCount={pageCount} setPageNumber={setPageNumber}>

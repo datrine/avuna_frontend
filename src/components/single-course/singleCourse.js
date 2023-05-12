@@ -6,7 +6,7 @@ import Clock from "../../assets/clock.svg";
 import Eye from "../../assets/opened-eye.svg";
 import Button from "../button/button";
 
-const SingleCourse = ({ img, courseText, courseTitle, modules, duration, price, number }) => {
+const SingleCourse = ({ img, courseText, courseTitle, modules, duration, price, number, action }) => {
   return (
     <div className="single-course-container">
       <div className="single-course-wrapper">
@@ -37,7 +37,7 @@ const SingleCourse = ({ img, courseText, courseTitle, modules, duration, price, 
           </div>
           <div className="single-course-price">
             <div className="single-course-button">
-              <Button buttonText="Enroll Course" color="white" bgColor="#0671E0" />
+              <Button buttonText="Enroll Course" color="white" bgColor="#0671E0" action={action} />
             </div>
             <h2>{price}</h2>
           </div>
