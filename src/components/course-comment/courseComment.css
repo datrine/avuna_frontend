@@ -1,0 +1,67 @@
+.course-comment-container > h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #0663c7;
+}
+
+.course-write-comment {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.course-write-comment textarea {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  background: #ffffff;
+  height: 124px;
+  border: 2px solid #066fe0;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #4d4d4d;
+}
+
+.course-write-buttons {
+  margin: 24px 0px 32px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.course-write-buttons div {
+  width: 35%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.course-write-buttons div button {
+  width: 47%;
+  padding: 16px 0px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.course-write-buttons div button:first-child {
+  background: #0671e0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #f5f7fa;
+}
+
+.course-write-buttons div button:last-child {
+  background: #eef5fc;
+  border: 2px solid #0671e0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #0663c7;
+}

@@ -38,7 +38,7 @@ const ProfileSide = ({ data, activeProfile, action, user }) => {
         <img src={Logout} alt="logout" />
         <p
           onClick={async () => {
-            const url = `https://avuna-backend.onrender.com/api/logout?${user?.accountID}&${token?.sessID}&${token?.clientID}`;
+            const url = `https://avuna-232c595f9bcf.herokuapp.com/api/logout?${user?.accountID}&${token?.sessID}&${token?.clientID}`;
             const config = {
               headers: {
                 "Content-Type": "application/json",

@@ -113,7 +113,7 @@ const ResetForm = () => {
   let query = useQuery();
   const token = query.get("token");
   const axiosInstance = axios.create({
-    baseURL: "https://avuna-backend.onrender.com/api",
+    baseURL: "https://avuna-232c595f9bcf.herokuapp.com/api",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

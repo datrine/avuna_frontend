@@ -21,22 +21,24 @@ const Home = () => {
   useEffect(() => {
     setToken(cookies.Name);
   }, [cookies]);
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token?.accessToken}`,
-    },
-  };
-  console.log(preferences);
-  const url = "https://avuna-backend.onrender.com/api/preferences";
-  axios
-    .get(url, config)
-    .then((response) => {
-      setPreferences(response.data.preferences);
-    })
-    .catch((error) => {
-      console.log(error.response.data.err.msg);
-    });
+  useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token?.accessToken}`,
+      },
+    };
+    console.log(preferences);
+    const url = "https://avuna-232c595f9bcf.herokuapp.com/api/preferences";
+    axios
+      .get(url, config)
+      .then((response) => {
+        setPreferences(response.data.preferences);
+      })
+      .catch((error) => {
+        console.log(error.response.data.err.msg);
+      });
+  }, [token]);
 
   const myref = useRef();
   useEffect(() => {

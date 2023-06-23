@@ -41,7 +41,7 @@ const SignIn = () => {
             Authorization: `Bearer ${response.data.accessToken}`,
           },
         };
-        const url = "https://avuna-backend.onrender.com/api/accounts/me";
+        const url = "https://avuna-232c595f9bcf.herokuapp.com/api/accounts/me";
         try {
           axios.get(url, config).then((response) => {
             window.sessionStorage.setItem("user", JSON.stringify(response.data));

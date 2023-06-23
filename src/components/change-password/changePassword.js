@@ -102,7 +102,7 @@ const ChangePassword = () => {
                   Authorization: `Bearer ${token?.accessToken}`,
                 },
               };
-              const url = "https://avuna-backend.onrender.com/api/accounts/password/change";
+              const url = "https://avuna-232c595f9bcf.herokuapp.com/api/accounts/password/change";
               try {
                 await axios.post(url, data, config).then((response) => {
                   toast.success("Changed Successfully");

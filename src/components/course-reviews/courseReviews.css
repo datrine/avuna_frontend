@@ -1,0 +1,13 @@
+.course-reviews-container {
+  width: 100%;
+}
+
+.course-reviews-container > h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  text-align: center;
+  color: #0663c7;
+  margin-bottom: 32px;
+}

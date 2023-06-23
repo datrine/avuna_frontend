@@ -28,7 +28,7 @@ const UserProfile = () => {
         Authorization: `Bearer ${token?.accessToken}`,
       },
     };
-    const url = "https://avuna-backend.onrender.com/api/accounts/me";
+    const url = "https://avuna-232c595f9bcf.herokuapp.com/api/accounts/me";
     axios
       .get(url, config)
       .then((response) => {

@@ -328,7 +328,7 @@ const PreferenceSingle = () => {
                       Authorization: `Bearer ${token?.accessToken}`,
                     },
                   };
-                  const url = "https://avuna-backend.onrender.com/api/preferences/add";
+                  const url = "https://avuna-232c595f9bcf.herokuapp.com/api/preferences/add";
                   const data = {
                     preferences: {
                       courses: categories,

@@ -1,0 +1,32 @@
+.course-description {
+  margin-bottom: 32px;
+}
+
+.course-description h2,
+.learn h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 8px;
+  color: #0663c7;
+}
+
+.course-description p,
+.learn > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: justify;
+  color: #4d4d4d;
+  margin-bottom: 10px;
+}
+
+.learn {
+  margin-bottom: 32px;
+}
+
+.learn h2 {
+  margin-bottom: 16px;
+}

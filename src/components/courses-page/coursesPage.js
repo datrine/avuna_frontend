@@ -19,7 +19,12 @@ const CoursesPage = () => {
   const [courses, setCourses] = useState("");
   const [categories, setCategories] = useState([]);
   const [finishedLoading, setFinishedLoading] = useState(false);
+  const [pageLoads, setPageLoads] = useState(true);
   const [stillLoading, setStillLoading] = useState(false);
+  const [activeCourse, setActiveCourse] = useState(categories[0]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [usersPerPage, setUsersPerPage] = useState(3);
+  const [windowSize, setWindowSize] = useState([window.innerWidth]);
   console.log(courses);
   const [cookies] = useCookies(["user"]);
   useEffect(() => {
@@ -32,11 +37,12 @@ const CoursesPage = () => {
         Authorization: `Bearer ${token?.accessToken}`,
       },
     };
-    const url = "https://avuna-backend.onrender.com/api/courses/categories";
+    const url = "https://avuna-232c595f9bcf.herokuapp.com/api/courses/categories";
     axios
       .get(url, config)
       .then((response) => {
         setCategories(response.data.categories);
+        setPageLoads(false);
       })
       .catch((error) => {
         console.log(error.response.data.err.msg);
@@ -107,10 +113,7 @@ const CoursesPage = () => {
       id: 1,
     },
   ];
-  const [activeCourse, setActiveCourse] = useState(categories[0]);
-  const [pageNumber, setPageNumber] = useState(0);
-  const [usersPerPage, setUsersPerPage] = useState(3);
-  const [windowSize, setWindowSize] = useState([window.innerWidth]);
+
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize([window.innerWidth]);
@@ -134,115 +137,121 @@ const CoursesPage = () => {
   const pageCount = Math.ceil(subCourses.length / usersPerPage);
   return (
     <div className="courses-page-container">
-      <Layout>
-        <div className="courses-page-header">
-          {categories?.map((item, index) => {
-            return (
-              <div
-                key={index}
-                onClick={async () => {
-                  setActiveCourse(item);
-                  setStillLoading(true);
-                  const config = {
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${token?.accessToken}`,
-                    },
-                  };
-                  const url = `https://avuna-backend.onrender.com/api/courses/categories/:${item}/courses`;
-                  axios
-                    .get(url, config)
-                    .then((response) => {
-                      setCourses(response.data.courses);
-                      setStillLoading(false);
-                      setFinishedLoading(true);
-                    })
-                    .catch((error) => {
-                      console.log(error.response.data.err.msg);
-                      if (error.response.data.err.msg === "Access token not valid") {
-                        navigate("/login");
-                      }
-                    });
-                }}
-                className={activeCourse === item ? "courses-page-active" : ""}>
-                <img src={activeCourse === item ? CourseActive : Course} alt="courses" />
-                <p>{item}</p>
-              </div>
-            );
-          })}
-        </div>
-        {finishedLoading ? (
-          <div className="courses-page-body">
-            <div className="courses-page-head">
-              <h2>{activeCourse}</h2>
-              <div className="courses-page-search">
-                <img src={Search} alt="search" />
-                <input type="text" placeholder="Search" />
-                <img src={Filter} alt="filter" />
-              </div>
-            </div>
-            <div className="courses-page-all">
-              {subCourses?.map((item, index) => {
-                return (
-                  <div key={index} className="courses-page-single">
-                    <SingleCourse
-                      number={item.number}
-                      img={item.courseImg}
-                      courseTitle={item.courseTitle}
-                      courseText={item.courseText}
-                      duration={item.duration}
-                      modules={item.module}
-                      price={item.price}
-                      action={() => {
-                        navigate(`/courses-detail?id=${item.id}`);
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+      {pageLoads ? (
+        <Loader />
+      ) : (
+        <Layout>
+          <div className="courses-page-header">
+            {categories?.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={async () => {
+                    setActiveCourse(item);
+                    setStillLoading(true);
+                    const config = {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token?.accessToken}`,
+                      },
+                    };
+                    const url = `https://avuna-232c595f9bcf.herokuapp.com/api/courses/categories/:${item}/courses`;
+                    axios
+                      .get(url, config)
+                      .then((response) => {
+                        setCourses(response.data.courses);
+                        setStillLoading(false);
+                        setFinishedLoading(true);
+                      })
+                      .catch((error) => {
+                        console.log(error.response.data.err.msg);
+                        if (error.response.data.err.msg === "Access token not valid") {
+                          navigate("/login");
+                        }
+                      });
+                  }}
+                  className={activeCourse === item ? "courses-page-active" : ""}>
+                  <img src={activeCourse === item ? CourseActive : Course} alt="courses" />
+                  <p>{item}</p>
+                </div>
+              );
+            })}
           </div>
-        ) : null}
-        {stillLoading ? <Loader /> : null}
-      </Layout>
-      <div className="course-pages-all">
-        <CoursesContainer title={`Popular In  ${activeCourse}`} type="true" pageCount={pageCount} setPageNumber={setPageNumber}>
-          {subCourses?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
-            return (
-              <div key={index}>
-                <SingleCourse
-                  number={item.number}
-                  img={item.courseImg}
-                  courseTitle={item.courseTitle}
-                  courseText={item.courseText}
-                  duration={item.duration}
-                  modules={item.module}
-                  price={item.price}
-                />
+          {finishedLoading ? (
+            <>
+              <div className="courses-page-body">
+                <div className="courses-page-head">
+                  <h2>{activeCourse}</h2>
+                  <div className="courses-page-search">
+                    <img src={Search} alt="search" />
+                    <input type="text" placeholder="Search" />
+                    <img src={Filter} alt="filter" />
+                  </div>
+                </div>
+                <div className="courses-page-all">
+                  {subCourses?.map((item, index) => {
+                    return (
+                      <div key={index} className="courses-page-single">
+                        <SingleCourse
+                          number={item.number}
+                          img={item.courseImg}
+                          courseTitle={item.courseTitle}
+                          courseText={item.courseText}
+                          duration={item.duration}
+                          modules={item.module}
+                          price={item.price}
+                          action={() => {
+                            navigate(`/courses-detail?id=${item.id}&name=${item.courseTitle}&cat=${activeCourse}`);
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            );
-          })}
-        </CoursesContainer>
-      </div>
-      <div className="course-pages-all">
-        <CoursesContainer title={`Popular In  ${activeCourse}`} type="true" pageCount={pageCount} setPageNumber={setPageNumber}>
-          {subCourses?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
-            return (
-              <div key={index}>
-                <SingleCourse
-                  number={item.number}
-                  img={item.courseImg}
-                  courseTitle={item.courseTitle}
-                  courseText={item.courseText}
-                  duration={item.duration}
-                  modules={item.module}
-                  price={item.price}
-                />
+              <div className="course-pages-all">
+                <CoursesContainer title={`Popular In  ${activeCourse}`} type="true" pageCount={pageCount} setPageNumber={setPageNumber}>
+                  {subCourses?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <SingleCourse
+                          number={item.number}
+                          img={item.courseImg}
+                          courseTitle={item.courseTitle}
+                          courseText={item.courseText}
+                          duration={item.duration}
+                          modules={item.module}
+                          price={item.price}
+                        />
+                      </div>
+                    );
+                  })}
+                </CoursesContainer>
               </div>
-            );
-          })}
-        </CoursesContainer>
-      </div>
+              <div className="course-pages-all">
+                <CoursesContainer title={`Popular In  ${activeCourse}`} type="true" pageCount={pageCount} setPageNumber={setPageNumber}>
+                  {subCourses?.slice(pagesVisited, pagesVisited + usersPerPage)?.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <SingleCourse
+                          number={item.number}
+                          img={item.courseImg}
+                          courseTitle={item.courseTitle}
+                          courseText={item.courseText}
+                          duration={item.duration}
+                          modules={item.module}
+                          price={item.price}
+                        />
+                      </div>
+                    );
+                  })}
+                </CoursesContainer>
+              </div>
+            </>
+          ) : null}
+          {stillLoading ? <Loader /> : null}
+        </Layout>
+      )}
     </div>
   );
 };

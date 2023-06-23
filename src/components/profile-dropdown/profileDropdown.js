@@ -8,6 +8,7 @@ import Certificate from "../../assets/certificate.svg";
 import Help from "../../assets/help.svg";
 import Logout from "../../assets/logout.svg";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const ProfileDropdown = ({ name, user }) => {
   const data = [
@@ -41,18 +42,11 @@ const ProfileDropdown = ({ name, user }) => {
       name: "Log Out",
     },
   ];
-  let loginToken = window.sessionStorage.getItem("token");
+  const [cookies, setCookies] = useCookies(["user"]);
   const [token, setToken] = useState("");
   useEffect(() => {
-    if (loginToken === undefined) {
-      setToken("");
-    } else if (loginToken === null) {
-      setToken("");
-    } else {
-      let newLoginToken = JSON.parse(loginToken);
-      setToken(newLoginToken);
-    }
-  }, [loginToken]);
+    setToken(cookies.Name);
+  }, [cookies]);
   const navigate = useNavigate();
 
   return (
@@ -72,7 +66,7 @@ const ProfileDropdown = ({ name, user }) => {
                 <img src={item.img} alt="items" />
                 <p
                   onClick={async () => {
-                    const url = `https://avuna-backend.onrender.com/api/logout?${user?.accountID}&${token?.sessID}&${token?.clientID}`;
+                    const url = `https://avuna-232c595f9bcf.herokuapp.com/api/logout?${user?.accountID}&${token?.sessID}&${token?.clientID}`;
                     const config = {
                       headers: {
                         "Content-Type": "application/json",
@@ -83,6 +77,9 @@ const ProfileDropdown = ({ name, user }) => {
                       try {
                         await axios.get(url, config).then((response) => {
                           navigate("/login");
+                          setCookies("Name", "");
+                          window.sessionStorage.removeItem("user");
+                          window.sessionStorage.removeItem("token");
                         });
                       } catch (error) {
                         if (error.response.data.err.msg === "Access token not valid") navigate("/login");

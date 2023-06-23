@@ -26,6 +26,10 @@
   flex: 1;
 }
 
+.signup-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (max-width: 500px) {
   .signup-container {
     height: unset;
